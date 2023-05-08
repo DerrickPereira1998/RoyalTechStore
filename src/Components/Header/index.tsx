@@ -17,7 +17,7 @@ export default function Header() {
         </button>
       </span>
       <div className={styles.header__div} />
-      <Link className={styles.header__login} to={'/login'}>
+      <Link className={styles.header__login} to={'/userlogin'}>
         Entrar
       </Link>
       <Link className={styles.header__shoppingcart} to='/carrinho'>

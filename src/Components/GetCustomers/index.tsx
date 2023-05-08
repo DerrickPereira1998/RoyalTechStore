@@ -24,6 +24,7 @@ export default function GetCustomers() {
           <ul>
             <li>{customer.name}</li>
             <li>{customer.password}</li>
+            <li>{customer.email}</li>
           </ul>
         )
       })}
