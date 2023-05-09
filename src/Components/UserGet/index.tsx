@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import styles from './UserGet.module.scss'
-import Footer from 'Components/Footer';
-import { Link, redirect, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function UserGet() {
+
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,41 +24,36 @@ export default function UserGet() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "userRegister")
-        if(data.status == "ok"){
+        if (data.status === "ok") {
           window.localStorage.setItem("token", data.data)
           alert("Login Aceito")
-          //const link: any = "./teste"
-          //window.location.href("./teste")
-           return <Navigate to={"/teste"}/>
         }
       })
+    navigate('/teste')
   }
 
   return (
-    <>
-      <section className={styles.section}>
-        <form action='' className={styles.form} onSubmit={handleOnSubmit}>
-          <h1 className={styles.form__title}>
-            Fazer login
-          </h1>
-          <div className={styles.form__div}>
-            <p className={styles.form__div__text}>
-              Email
-            </p>
-            <input required type='email' className={styles.form__div__input} value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <div className={styles.form__div}>
-            <p className={styles.form__div__text}>
-              Senha
-            </p>
-            <input required type='password' className={styles.form__div__input} value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <button type='submit' className={styles.form__button} >
-            Login
-          </button>
-        </form>
-      </section>
-      <Footer />
-    </>
+    <section className={styles.section}>
+      <form action='' className={styles.form} onSubmit={handleOnSubmit}>
+        <h1 className={styles.form__title}>
+          Fazer login
+        </h1>
+        <div className={styles.form__div}>
+          <p className={styles.form__div__text}>
+            Email
+          </p>
+          <input required type='email' className={styles.form__div__input} value={email} onChange={(e) => setEmail(e.target.value)} />
+        </div>
+        <div className={styles.form__div}>
+          <p className={styles.form__div__text}>
+            Senha
+          </p>
+          <input required type='password' className={styles.form__div__input} value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <button type='submit' className={styles.form__button} >
+          Login
+        </button>
+      </form>
+    </section>
   )
 };

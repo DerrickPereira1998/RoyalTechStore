@@ -25,7 +25,7 @@ else { //PARA SERVIDOR LOCAL
     useUnifiedTopology: true
   })
     .then(() => {
-      console.log("MongoDB conectado localmente!");
+      console.log("MongoDB conectado localmente na porta 5000!");
     })
     .catch((err) => {
       console.log("Erro ao conectar ao Mongo: " + err);
@@ -39,7 +39,6 @@ const cors = require("cors"); // CORS PARA UTILIZAR MULTIPLOS SERVIDORES
 const bcrypt = require("bcryptjs") // BCRYPTJS PARA ENCRIPTAR DADOS
 const jwt = require("jsonwebtoken") // JSW PARA CRIAR WEB TOKENS E OS COLOCAR NO SERVIDOR LOCAL
 const JWT_SECRET = "derqr123131ffkfoqnlgvveiisaset()qwzq[eqweqe]erwto2h4821494534dfsghsa4gq"
-console.log("App listen at port 5000");
 app.use(express.json());
 app.use(cors());
 app.get("/", (req, resp) => {
