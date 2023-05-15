@@ -53,6 +53,14 @@ export default function UserGet() {
         <button type='submit' className={styles.form__button} >
           Login
         </button>
+        <span className={styles.form__notsigned}>
+        <p className={styles.form__notsigned__text}>
+          Não possui cadastro?
+        </p>
+        <Link className={styles.form__notsigned__link} to={'/usersignup'}>
+          Se inscreva!
+        </Link>
+      </span>
       </form>
     </section>
   )

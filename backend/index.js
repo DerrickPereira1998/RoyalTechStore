@@ -62,6 +62,7 @@ User.createIndexes();
 app.post('/customerLogin', async (req, res) => {
   const { email, password } = req.body;
 
+  //RETORNA SE O EMAIL JA FOI CADASTRADO
   const user = await User.findOne({ email })
   if (!user) {
     return res.json({ error: 'User not found' })

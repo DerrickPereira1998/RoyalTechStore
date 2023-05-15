@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import styles from './UserPost.module.scss'
-import Footer from 'Components/Footer';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function UserPost() {
+
+  const navigate = useNavigate()
 
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -22,11 +24,11 @@ export default function UserPost() {
     })
     result = await result.json();
     if (result) {
-      alert("Data saved succesfully");
       setPassword("");
       setName("");
       setEmail("")
     }
+    navigate('/teste')
   }
 
   return (
@@ -57,9 +59,16 @@ export default function UserPost() {
           <button type='submit' className={styles.form__button}>
             Continuar
           </button>
+          <span className={styles.form__signed}>
+        <p className={styles.form__signed__text}>
+          Já possui cadastro?
+        </p>
+        <Link className={styles.form__signed__link} to={'/userlogin'}>
+          Fazer Login
+        </Link>
+      </span>
         </form>
       </section>
-      <Footer />
     </>
   )
 };
