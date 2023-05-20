@@ -10,6 +10,7 @@
 
   &__logo {
     margin-left: 1%;
+    margin-right: 0.5vw;
     max-width: 85%;
     max-height: 85%;
     color: $lightblue1;
@@ -19,7 +20,7 @@
     display: flex;
 
     &__input {
-      padding: 0.5vh 33vw 0.5vh 1vw;
+      padding: 0.5vh calc(33vw - 100px) 0.5vh 1vw;
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
       border: 0;
@@ -32,6 +33,7 @@
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
       border: 0;
+      margin-right: 1vw;
     }
   }
 
@@ -53,14 +55,79 @@
       height: 50px;
       width: 33.3%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
       color: $lightblue3;
       text-decoration: none;
+      &:first-child{
+        cursor: pointer;
+        z-index: 105;
+      }
     }
   }
 }
+
+.popup{
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+  &__popupInner{
+    position: absolute;
+    float: right;
+    top: 50px;
+    right: 0;
+    display: grid;
+    width: 480px;
+    gap: 1px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    background-color: $black;
+    z-index: 2000;
+    &__popupBtn{
+      height: 50px;
+      background-color: white;
+      border:1px solid $white
+    }
+  }
+  &__popupArrow{
+    position: absolute;
+    background-color: $white;
+    width: 40px;
+    height: 40px;
+    top: 50px;
+    right: 380px;
+    z-index: 105;
+    transform: rotate(45deg);
+
+  }
+}
+
+@media (max-width: 1050px){
+  .header {
+    &__searchbar {
+      &__input {
+        padding: 0.5vh calc(33vw - 200px) 0.5vh 1vw;
+      }
+    }
+    &__nav {
+      width: 380px;
+    }
+  }
+
+  .popup{
+    &__popupInner{
+      width: 380px;
+    }
+    &__popupArrow{
+      right: 293px;
+    }
+  }
+} 
 
 @media (max-width: 700px) {
   .header {
@@ -75,7 +142,7 @@
       display: flex;
   
       &__input {
-        padding: 0.5vh 10vw 0.5vh 1vw;
+        padding: 0.5vh calc(70vw - 250px) 0.5vh 1vw;
         border-bottom-left-radius: 5px;
         border-top-left-radius: 5px;
         border: 0;
@@ -96,23 +163,26 @@
     &__nav {
       display: flex;
       position: fixed;
-      inset: 0 0 0 40%;
+      inset: 0 0 0 calc(100% - 190px);
       flex-direction: column;
       flex-wrap: nowrap;
       align-items: flex-start;
       justify-content: center;
       gap: 20px;
-      padding: min(20vh, 10rem) 2rem;
+      padding: 150px 2rem 120px 2rem;
       background: hsl(0 0% 100%/ 0.1);
       z-index: 1000;
       transform: translateX(100%);
       transition: 350ms ease-out;
+      height: 0;
       &__link {
         padding: 11px 0 11px 0;
-        border: 2px solid  $lightblue1;
-        border-radius: 15px;
+        border-left: 2px solid  $lightblue1;
+        border-right: 2px solid  $lightblue1;
+        align-items: center;
         &:last-child{
-          padding: 0;
+          padding-top: 7px;
+          padding-bottom: 7px;
         }
       }
     }
@@ -129,4 +199,22 @@
       color: white;
     }
   }
+
+  .popup{
+    &__popupInner{
+      width: 190px;
+      top: 110px;
+      right: 254px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      &__popupBtn{
+        height: 80px;
+      }
+    }
+    &__popupArrow{
+      display: none;
+    }
+  }
 }
+

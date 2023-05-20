@@ -11,14 +11,14 @@ const Products = new Schema({
     required: true
   },
   preco: {
-    type: mongoose.Types.Decimal128,
+    type: String,
     required: true
   },
   nota: {
     type: Number,
     default: 0
   },
-  categoria: {
+  user_id: {
     //EXEMPLO DE CRIAÇÃO DE CHAVES ESTRANGEIRAS
     type: Schema.Types.ObjectId,
     ref: "customer"

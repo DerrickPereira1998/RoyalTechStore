@@ -69,7 +69,7 @@ app.post('/customerLogin', async (req, res) => {
   }
   if (await bcrypt.compare(password, user.password)) {
     // CRIAÇÃO DE DADOS DO USUARIO NO LOCAL STORAGE
-    const token = jwt.sign({ email: user.email }, JWT_SECRET)
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, {expiresIn:86400})
 
     if (res.status(201)) {
       return res.json({ status: "ok", data: token })
@@ -80,19 +80,7 @@ app.post('/customerLogin', async (req, res) => {
   res.json({ status: "error", error: "Invalid Password" })
 })
 
-app.get('/getAllCustomers', async (req, res) => {
-  try {
-
-    const allCustomers = await User.find({});
-    res.send({ status: 'ok', data: allCustomers })
-
-  } catch (e) {
-    resp.send("Error when getting all customers");
-  }
-})
-
 // PEGAR DADOS DE USUARIO USANDO LOCAL STORAGE
-
 app.post("/customerData", async (req, res) => {
   const { token } = req.body
   try {
@@ -134,15 +122,16 @@ app.post("/registerCustomer", async (req, res) => {
 
 //ITENS
 
+//CUSTOMERS
+
 require('./models/Products')
-const Product = mongoose.model('customers');
+const Product = mongoose.model('products');
 Product.createIndexes();
 
 app.get('/getAllProducts', async (req, res) => {
   try {
     const allProducts = await Product.find({});
     res.send({ status: 'ok', data: allProducts })
-
   } catch (e) {
     resp.send("Error when getting all customers");
   }

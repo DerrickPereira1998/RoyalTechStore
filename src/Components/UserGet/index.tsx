@@ -26,10 +26,9 @@ export default function UserGet() {
         console.log(data, "userRegister")
         if (data.status === "ok") {
           window.localStorage.setItem("token", data.data)
-          alert("Login Aceito")
         }
       })
-    navigate('/teste')
+    navigate('/')
   }
 
   return (
