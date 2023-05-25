@@ -18,7 +18,7 @@ export default function Products() {
       {products.length >= 0 ? products.map((product, index) => {
           return(
             <div className={styles.div} key={index}>
-              <img src={product.imagem}/>
+              <img src={product.imagem} alt={product._id}/>
               <p>{product.titulo}</p>
               <p>{product.descricao}</p>
               <p>{product.preco}</p>
