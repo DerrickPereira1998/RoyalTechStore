@@ -1,9 +1,10 @@
 export default interface IProduct {
-    _id: String
-    titulo: String
-    descricao: String
-    preco: String
+    _id: string
+    imagem: string
+    titulo: string
+    descricao: string
+    preco: string
     nota: Number
-    user_id: String
+    user_id: string
     data: Date
 }

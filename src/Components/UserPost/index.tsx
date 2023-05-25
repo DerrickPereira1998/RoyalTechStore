@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './UserPost.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function UserPost() {
 
@@ -12,22 +13,15 @@ export default function UserPost() {
 
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
-
-    let result = await fetch(
-      'http://localhost:5000/registerCustomer', {
-      method: "POST",
-      
-      body: JSON.stringify({ email, name, password }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    result = await result.json();
-    if (result) {
-      setPassword("");
-      setName("");
-      setEmail("")
+    try {
+      await axios.post('http://localhost:5000/registerCustomer', { email, name, password })
+    } 
+    catch (error) {
+      console.log('error on submit: ', error)
     }
+    setPassword("");
+    setName("");
+    setEmail("")
     navigate('/teste')
   }
 

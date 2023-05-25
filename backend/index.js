@@ -120,10 +120,9 @@ app.post("/registerCustomer", async (req, res) => {
   }
 });
 
-//ITENS
+//PRODUCTS
 
-//CUSTOMERS
-
+//GET ALL PRODUCTS
 require('./models/Products')
 const Product = mongoose.model('products');
 Product.createIndexes();
@@ -134,6 +133,29 @@ app.get('/getAllProducts', async (req, res) => {
     res.send({ status: 'ok', data: allProducts })
   } catch (e) {
     resp.send("Error when getting all customers");
+  }
+})
+
+//CREATE PRODUCTS
+
+app.post("/registerProduct", async (req, res) => {
+  const {imagem, titulo, descricao, preco, user_id} = req.body
+  try {
+    await Product.create({imagem, titulo, descricao, preco, user_id})
+    res.status.send(201).json({msg: "New image uploaded!"})
+  } catch (e) {
+    res.send({ status: `error: ${e}` });
+  }
+});
+
+//GET IMAGE
+
+app.get('/getAllImages', async (req, res) => {
+  try {
+    const allImages = await Image.find({});
+    res.send({ status: 'ok', data: allImages })
+  } catch (e) {
+    res.send("Error when getting all customers", e);
   }
 })
 

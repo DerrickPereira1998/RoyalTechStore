@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './UserGet.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function UserGet() {
 
@@ -11,23 +12,9 @@ export default function UserGet() {
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    fetch('http://localhost:5000/customerLogin', {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        "Access-Control-Allow-Origin": "*"
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "userRegister")
-        if (data.status === "ok") {
-          window.localStorage.setItem("token", data.data)
-        }
-      })
+      axios.post('http://localhost:5000/customerLogin', {email, password})
+      .then(res => window.localStorage.setItem("token", res.data.data))
+      .catch(err => console.log("Erro ao logar cliente", err))
     navigate('/')
   }
 

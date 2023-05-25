@@ -1,10 +1,10 @@
 import styles from './Header.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { RxMagnifyingGlass, RxHamburgerMenu } from 'react-icons/rx'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from './Logo.png'
 import ICustomer from 'interfaces/ICustomer'
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Header() {
@@ -14,6 +14,8 @@ export default function Header() {
 
   const navToggle = document.getElementById('navbutton')
   const nav = document.getElementById('nav')
+
+  const navigate = useNavigate()
 
   //Se for reutilizar, pode necessitar de (overflowX: hidden) no body!
   function handleOnCLick() {
@@ -41,7 +43,7 @@ export default function Header() {
 
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
-    axios.post('http://localhost:5000/customerData', {token: window.localStorage.getItem("token")})
+    axios.post('http://localhost:5000/customerData', { token: window.localStorage.getItem("token") })
       .then(res => setCustomer(res.data.data))
       .catch(err => console.log(err))
   }, [])
@@ -72,7 +74,7 @@ export default function Header() {
             Login
           </Link> :
           <div className={styles.header__nav__link} aria-hidden="false" onClick={() => togglePopup()}>
-            Olá, {customer?.name} <br/>
+            Olá, {customer?.name} <br />
             <strong>Sua Conta</strong>
           </div>}
 
@@ -82,7 +84,7 @@ export default function Header() {
             <div className={styles.popup__popupArrow} />
             <div className={styles.popup__popupInner}>
               <button className={styles.popup__popupInner__popupBtn}>Meus produtos</button>
-              <button className={styles.popup__popupInner__popupBtn}>Comentários feitos</button>
+              <button className={styles.popup__popupInner__popupBtn} onClick={() => navigate('/newproduct')}>Criar produto</button>
               <button className={styles.popup__popupInner__popupBtn}>Modificar conta</button>
               <button className={styles.popup__popupInner__popupBtn} onClick={logout}>Sair da conta</button>
             </div>
@@ -90,7 +92,7 @@ export default function Header() {
         }
 
         <Link className={styles.header__nav__link} to={'/compras'} aria-hidden="false">
-          Compras <br/>
+          Compras <br />
           <strong>Feitas</strong>
         </Link>
         <Link className={styles.header__nav__link} to={'/carrinho'} aria-hidden="false">

@@ -14,14 +14,14 @@ export default function Products() {
   }, [])
 
   return (
-    <section>
+    <section onClick={() => console.log("Produtos",products)}>
       {products.length >= 0 ? products.map((product, index) => {
           return(
             <div className={styles.div} key={index}>
-              titulo: {product.titulo}
-              desc: {product.descricao}
-              preço: {product.preco}
-              user: {product.user_id}
+              <img src={product.imagem}/>
+              <p>{product.titulo}</p>
+              <p>{product.descricao}</p>
+              <p>{product.preco}</p>
             </div>
           )
       }) : "nope"}
