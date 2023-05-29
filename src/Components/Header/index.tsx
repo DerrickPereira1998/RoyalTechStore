@@ -1,5 +1,4 @@
 import styles from './Header.module.scss'
-import axios from 'axios'
 import logo from './Logo.png'
 import ICustomer from 'interfaces/ICustomer'
 import http from 'Utils/Http'

@@ -148,20 +148,9 @@ app.post("/registerProduct", async (req, res) => {
   }
 });
 
-//GET IMAGE
-
-app.get('/getAllImages', async (req, res) => {
-  try {
-    const allImages = await Image.find({});
-    res.send({ status: 'ok', data: allImages })
-  } catch (e) {
-    res.send("Error when getting all customers", e);
-  }
-})
-
 //PORT
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, '0.0.0.0', function () {
-  console.log('Servido rodando!')
-});
+  console.log(`Servido rodando na porta ${PORT}!`)
+});     

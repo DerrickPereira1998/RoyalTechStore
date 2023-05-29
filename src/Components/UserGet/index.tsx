@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import styles from './UserGet.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import http from 'Utils/Http';
 
 export default function UserGet() {
