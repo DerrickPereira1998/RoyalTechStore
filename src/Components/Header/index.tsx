@@ -1,11 +1,12 @@
 import styles from './Header.module.scss'
+import axios from 'axios'
+import logo from './Logo.png'
+import ICustomer from 'interfaces/ICustomer'
+import http from 'Utils/Http'
 import { Link, useNavigate } from 'react-router-dom'
 import { RxMagnifyingGlass, RxHamburgerMenu } from 'react-icons/rx'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
-import logo from './Logo.png'
-import ICustomer from 'interfaces/ICustomer'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 
 export default function Header() {
 
@@ -17,6 +18,7 @@ export default function Header() {
 
   const navigate = useNavigate()
 
+  //FUNÇÃO RESPONSAVEL PELO O HEADER EM MOBILE,
   //Se for reutilizar, pode necessitar de (overflowX: hidden) no body!
   function handleOnCLick() {
     const visibility = nav?.getAttribute("data-visible")
@@ -43,7 +45,7 @@ export default function Header() {
 
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
-    axios.post('http://localhost:5000/customerData', { token: window.localStorage.getItem("token") })
+    http.post('customerData', { token: window.localStorage.getItem("token") })
       .then(res => setCustomer(res.data.data))
       .catch(err => console.log(err))
   }, [])

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './UserGet.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import http from 'Utils/Http';
 
 export default function UserGet() {
 
@@ -12,7 +13,7 @@ export default function UserGet() {
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-      axios.post('http://localhost:5000/customerLogin', {email, password})
+      http.post('customerLogin', {email, password})
       .then(res => window.localStorage.setItem("token", res.data.data))
       .catch(err => console.log("Erro ao logar cliente", err))
     navigate('/')
