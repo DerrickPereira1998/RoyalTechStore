@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const PORT = process.env.PORT || 'http://localhost:5000/'
+//Pega qualquer porta disponivel 
+const PORT = process.env.PORT 
 const http = axios.create({
     baseURL: PORT
 })
