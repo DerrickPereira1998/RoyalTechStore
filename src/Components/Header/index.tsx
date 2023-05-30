@@ -6,6 +6,7 @@ import logo from './Logo.png'
 import ICustomer from 'interfaces/ICustomer'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import http from 'Utils/Http'
 
 export default function Header() {
 
@@ -45,7 +46,7 @@ export default function Header() {
 
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
-    axios.post('http://localhost:5000/customerData', { token: window.localStorage.getItem("token") })
+    http.post('customerData', { token: window.localStorage.getItem("token") })
       .then(res => setCustomer(res.data.data))
       .catch(err => console.log(err))
   }, [])
