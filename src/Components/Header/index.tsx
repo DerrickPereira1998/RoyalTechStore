@@ -5,7 +5,6 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from './Logo.png'
 import ICustomer from 'interfaces/ICustomer'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import http from 'Utils/Http'
 
 export default function Header() {

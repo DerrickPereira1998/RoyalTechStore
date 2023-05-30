@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './CreateProduct.module.scss'
-import axios from 'axios';
 import ICustomer from 'interfaces/ICustomer';
+import http from 'Utils/Http';
 
 export default function CreateProduct() {
 
@@ -19,7 +19,7 @@ export default function CreateProduct() {
 
   const submitFileData = async (imagem: string, titulo: string, descricao: string, preco: string, user_id: string) => {
     try {
-      await axios.post('http://localhost:5000/registerProduct', { imagem, titulo, descricao, preco, user_id })
+      await http.post('registerProduct', { imagem, titulo, descricao, preco, user_id })
       console.log("file sent", imagem)
     } catch (error) {
       console.log('error on submit: ', error)
@@ -41,7 +41,7 @@ export default function CreateProduct() {
 
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
-    axios.post('http://localhost:5000/customerData', { token: window.localStorage.getItem("token") })
+    http.post('customerData', { token: window.localStorage.getItem("token") })
       .then(res => setCustomer(res.data.data))
       .catch(err => console.log(err))
   }, [])

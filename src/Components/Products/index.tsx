@@ -1,14 +1,14 @@
 import IProduct from 'interfaces/IProduct'
 import { useEffect, useState } from 'react'
 import styles from './Products.module.scss'
-import axios from 'axios'
+import http from 'Utils/Http'
 
 export default function Products() {
 
   const [products, setProducts] = useState<Array<IProduct>>([])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getAllProducts')
+    http.get('getAllProducts')
       .then(res => setProducts(res.data.data))
       .catch(err => console.log(err))
   }, [])

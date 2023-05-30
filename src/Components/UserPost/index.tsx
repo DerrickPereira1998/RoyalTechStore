@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './UserPost.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import http from 'Utils/Http';
 
 export default function UserPost() {
 
@@ -14,7 +14,7 @@ export default function UserPost() {
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/registerCustomer', { email, name, password })
+      await http.post('registerCustomer', { email, name, password })
     } 
     catch (error) {
       console.log('error on submit: ', error)

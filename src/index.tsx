@@ -13,4 +13,3 @@ root.render(
     </RecoilRoot>
   </React.StrictMode>
 );
-
