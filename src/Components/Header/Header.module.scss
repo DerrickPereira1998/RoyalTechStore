@@ -52,7 +52,7 @@
 
     &__link {
       height: 50px;
-      width: 33%;
+      width: 32%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,6 +60,7 @@
       color: $lightblue3;
       text-decoration: none;
       border: $darkblue1 solid 1px;
+      margin-top: 1px;
       &:first-child{
         cursor: pointer;
         z-index: 105;
@@ -186,6 +187,10 @@
         &:last-child{
           padding-top: 7px;
           padding-bottom: 7px;
+        }
+        &:hover{
+          border-left: 2px solid  $lightblue1;
+          border-right: 2px solid  $lightblue1;
         }
       }
     }
