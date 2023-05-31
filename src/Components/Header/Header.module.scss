@@ -2,6 +2,7 @@
 @import "src/styles/colors";
 
 .header {
+  background-color: $darkblue1;
   width: 100%;
   height: 50px;
   display: flex;
@@ -51,7 +52,7 @@
     align-items: center;
 
     &__link {
-      height: 50px;
+      height: 90%;
       width: 32%;
       display: flex;
       flex-direction: column;
@@ -115,7 +116,7 @@
   .header {
     &__searchbar {
       &__input {
-        padding: 0.5vh calc(33vw - 200px) 0.5vh 1vw;
+        padding: 0.5vh calc(34vw - 200px) 0.5vh 1vw;
       }
     }
     &__nav {
@@ -180,6 +181,7 @@
       transition: 350ms ease-out;
       height: 0;
       &__link {
+        height: 50px;
         padding: 11px 0 11px 0;
         border-left: 2px solid  $lightblue1;
         border-right: 2px solid  $lightblue1;

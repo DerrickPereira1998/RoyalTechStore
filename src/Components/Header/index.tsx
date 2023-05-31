@@ -52,7 +52,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <img src={logo} alt='logo do site royal tech store' className={styles.header__logo}/>
+      <img onClick={() => navigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo}/>
 
       <span className={styles.header__searchbar}>
         <input className={styles.header__searchbar__input} placeholder={'Pesquisar itens'}></input>

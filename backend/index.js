@@ -34,21 +34,19 @@ else { //PARA SERVIDOR LOCAL
 
 // For backend and express
 const express = require('express'); //EXPRESS
+const bodyParser = require('body-parser');
 const app = express();
 const cors = require("cors"); // CORS PARA UTILIZAR MULTIPLOS SERVIDORES
 const bcrypt = require("bcryptjs") // BCRYPTJS PARA ENCRIPTAR DADOS
 const jwt = require("jsonwebtoken") // JSW PARA CRIAR WEB TOKENS E OS COLOCAR NO SERVIDOR LOCAL
 const JWT_SECRET = "derqr123131ffkfoqnlgvveiisaset()qwzq[eqweqe]erwto2h4821494534dfsghsa4gq"
-app.use(express.json());
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' })); //AUMENTA LIMITE DE TAMANHO DE ENVIO
 app.use(cors());
 app.get("/", (req, resp) => {
-
   resp.send("App is Working");
-  // You can check backend is working or not by
-  // entering http://loacalhost:5000
-
-  // If you see App is working means
-  // backend working properly
+  // Para checar se o backend funciona,
+  // acesse http://localhost:5000.
 });
 
 //CUSTOMERS
@@ -136,7 +134,7 @@ app.get('/getAllProducts', async (req, res) => {
   }
 })
 
-//CREATE PRODUCTS
+//CREATE PRODUCT
 
 app.post("/registerProduct", async (req, res) => {
   const {imagem, titulo, descricao, preco, user_id} = req.body
@@ -153,4 +151,4 @@ app.post("/registerProduct", async (req, res) => {
 const PORT = process.env.PORT || 5000
 app.listen(PORT, '0.0.0.0', function () {
   console.log(`Servido rodando na porta ${PORT}!`)
-});     
+});

@@ -2,50 +2,102 @@
 @import "src/styles/colors";
 
 .section{
-  background-color: white;
+  background-color: $white;
   margin: 0 2vw 0 2vw;
   border: $white solid 5px;
-  border-radius: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding-top: 20px;
   &__title{
-    font-size:$titlefont ;
+    font-size: $titlefont ;
+    font-weight: 800;
     text-align: center;
     margin-bottom: 10px;
   }
 }
 
 .form{
-  background-color: white;
   display: grid;
   grid-template-columns: 40% 60%;
+  padding: 0 0 20px 0;
   &__left{
     display: flex;
     flex-direction: column;
     align-items: center;
+    &__fileinput{
+      opacity: 0;
+      height: 0;
+    }
+    &__filelabel{
+      background-color: $whitegray;
+      border: 1px solid $black;
+      border-radius: 5px;
+      padding: 5px;
+      &:hover{
+        background-color: grey;
+      }
+    }
   }
   &__right{
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-  &__label{
-    font-size: 0.75rem;
-  }
-  &__input{
-    padding: 0.5vh calc(33vw - 100px) 0.5vh 1vw;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+    padding: 32px 0 0 0;
+    &__div{
+      width: 93%;
+      &__label{
+        font-size: 0.75rem;
+      }
+      &__input{
+        width: 100%;
+        padding: 8px 0 8px 5px;
+        border: 1px solid grey;
+        border-radius: 5px;
+      }
+    }
   }
 }
 
+.submitbutton{
+  @include background-gradient();
+  width: calc(93% + 8px);
+  border: 1px solid $white;
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  color: $white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 .img{
-  width: 29vw;
-  height: 29vw;
+  width: max(25vw, 260px);
+  height: max(25vw, 260px);
+  border: 1px dashed $black;
+  margin: 10px 0 10px 0;
 }
 
 @media(max-width: 800px){
   .form{
     grid-template-columns: 1fr;
+    padding: 20px 0 20px 0;
+    &__right{
+      align-items: center;
+      padding: 32px 20px 0 20px;
+      &__div{
+        &__input{
+          width: 100%;
+        }
+      }
+    }
   }
   .img{
     width: 45vw;
     height: 45vw;
+  }
+  .submitbutton{
+    width: calc(93% + 8px);
+    margin-left: 8px;
   }
 }

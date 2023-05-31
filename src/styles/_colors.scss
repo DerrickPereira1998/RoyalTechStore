@@ -16,10 +16,16 @@ $lightblue1: #90E0EF;
 $lightblue2: #ADE8F4;
 $lightblue3: #CAF0F8;
 
+$lilac: #9b59b6;
+
 $darkgray: #141111;
 $whitegray: #c1c2c5;
 $white: #fff;
 $black: #000;
 
-$normalfont: clamp(8px, 16px, 24px);
-$titlefont: clamp(16px, 30px, 40px)
+$normalfont: 16px;
+$titlefont: 30px;
+
+@mixin background-gradient(){
+  background: linear-gradient(135deg,  $lightblue1, $lilac);
+}
