@@ -4,11 +4,12 @@
 .footer{
   display: flex;
   justify-content: center;
-  color: $white;
+  color: $darkblue1;
+  font-weight: 70;
   padding-bottom: 20px;
   margin-top: 20px;
   &__contato{
-    margin-left: 1%;
+    margin-left: 4px;
     color: $lightblue3;
     text-decoration: none;
     &:hover{

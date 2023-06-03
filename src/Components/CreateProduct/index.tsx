@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import styles from './CreateProduct.module.scss'
 import ICustomer from 'interfaces/ICustomer';
 import http from 'Utils/Http';
-import noImage from 'img/No-Image.jpg'
+import noImageJpg from 'img/No-Image.jpg'
+import {priceMask} from 'Utils/Mask';
 
 export default function CreateProduct() {
 
@@ -14,23 +15,21 @@ export default function CreateProduct() {
   const [desc, setDesc] = useState<string>("")
   const [price, setPrice] = useState<string>("")
 
+  const [imageErr, setImageErr] = useState<any>("")
+  const [priceErr, setPriceErr] = useState<any>("")
+
   const navigate = useNavigate()
+
+  const handleprice = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(e.target.value)
+    console.log(price)
+  }
 
   const onFileChange = async (e: any) => {
     const file = e.target.files[0]
     setImageName(e.target.files[0].name)
     const base64 = await convertToBase64(file)
     setImage(base64)
-  }
-
-  const submitFileData = async (imagem: string, titulo: string, descricao: string, preco: string, user_id: string) => {
-    try {
-      await http.post('registerProduct', { imagem, titulo, descricao, preco, user_id })
-      console.log("file sent", imagem)
-      navigate('/')
-    } catch (error) {
-      console.log('error on submit: ', error)
-    }
   }
 
   function convertToBase64(file: any) {
@@ -46,6 +45,30 @@ export default function CreateProduct() {
     })
   }
 
+  const submitFileData = async (e:any ,imagem: string, titulo: string, descricao: string, preco: string, user_id: string) => {
+    e.preventDefault()
+    if(image !== '' && price.length >= 4){
+      try {
+        await http.post('registerProduct', { imagem, titulo, descricao, preco, user_id })
+        console.log("file sent", imagem)
+        navigate('/')
+      } catch (error) {
+        console.log('error on submit: ', error)
+      }
+    } else{
+      if(image === ''){
+        setImageErr('selecione uma imagem')
+      } else{
+        setImageErr('')
+      }
+      if(price.length <= 3){
+        setPriceErr('O preço deve ser maior ou igual a R$ 1.00')
+      } else{
+        setPriceErr('')
+      }
+    }
+  }
+
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
     http.post('customerData', { token: window.localStorage.getItem("token") })
@@ -58,7 +81,7 @@ export default function CreateProduct() {
       <h1 className={styles.section__title}>
         Criação de Produto
       </h1>
-      <form action='' className={styles.form} onSubmit={() => submitFileData(image, title, desc, price, customer._id)}>
+      <form action='' className={styles.form} onSubmit={(e) => submitFileData(e,image, title, desc, price, customer._id)}>
         <div className={styles.form__left}>
           <label htmlFor='fileinput' className={styles.form__left__filelabel}>
             {imageName}
@@ -70,28 +93,30 @@ export default function CreateProduct() {
             name='myFile'
             accept='.jpeg, .png, .jpg'
             className={styles.form__left__fileinput}
-          />
+          /> 
           <div id="preview"></div>
-          <img src={image || noImage} className={styles.img} alt='Product' />
+          <img src={image || noImageJpg} className={styles.img} alt='Product' />
+          {imageErr !== '' && <p className={styles.form__err}>{imageErr}</p>}
         </div>
         <div className={styles.form__right}>
           <div className={styles.form__right__div}>
             <label htmlFor='title' className={styles.form__right__div__label}>
               Nome
             </label>
-            <input placeholder='Nome do Produto' className={styles.form__right__div__input} id='title' required value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input placeholder='Nome' className={styles.form__right__div__input} id='title' required value={title} onChange={(e) => setTitle(e.target.value)} />
           </div>
           <div className={styles.form__right__div}>
             <label htmlFor='desc' className={styles.form__right__div__label}>
               Descrição
             </label>
-            <textarea className={styles.form__right__div__input} id='desc' required value={desc} onChange={(e) => setDesc(e.target.value)} />
+            <textarea placeholder='Descrição' className={styles.form__right__div__input} id='desc' required value={desc} onChange={(e) => setDesc(e.target.value)} />
           </div>
           <div className={styles.form__right__div}>
             <label htmlFor='price' className={styles.form__right__div__label}>
               Preço
             </label>
-            <input className={styles.form__right__div__input} id='price' required value={price} onChange={(e) => setPrice(e.target.value)} />
+            <input placeholder='Preço' className={styles.form__right__div__input} id='price' required value={price} onChange={(e) => handleprice(priceMask(e))} />
+            {priceErr !== '' && <p className={styles.form__err}>{priceErr}</p>}
           </div>
           <button type='submit' className={styles.submitbutton}>
             Criar Produto

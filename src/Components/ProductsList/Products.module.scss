@@ -1,0 +1,116 @@
+@import "src/styles/reset";
+@import "src/styles/colors";
+
+.section{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin: 20px calc(2.5vw + 10px) 0 2vw;
+  gap: 1vw;
+  &__filters{
+    background-color: $darkblue2;
+    border: 1px solid $darkblue2;
+    border-radius: 10px;
+  }
+  &__products{
+    &__title{
+      font-size: $titlefont;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    &__list{
+      background-color: $white;
+      border: 1px solid $white;
+      border-radius: 10px;
+      padding: 1.5vw 4.5vw 1.5vw 1.5vw;
+      display: grid;
+      gap: 1vw;
+      grid-template-columns: repeat(4, 25%);
+      &__product{
+        width: 100%;
+        height: calc(90vw/4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transition: 0.3s;
+        cursor: pointer;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        &__img{
+          max-width: 100%;
+          min-height: 18vw;
+        }
+        &__price{
+          width: 100%;
+          margin-top: 10px;
+          font-size: 12px;
+          font-weight: 700;
+        }
+        &__name{
+          width: 100%;
+          margin-top: 4px;
+          font-size: 14px;
+        }
+        &:hover{
+          box-shadow: 0px 0px 20px 2px rgb(192, 192, 192);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .section{
+    margin: 20px 2vw 0 2vw;
+    grid-template-columns: 1fr;
+    &__filters{
+    }
+    &__products{
+      &__title{
+      }
+      &__list{
+        grid-template-columns: repeat(3, 33.3%);
+        padding: 1.5vw 3.5vw 1.5vw 1.5vw;
+        &__product{
+          height: calc(100vw/3);
+          overflow-y: scroll;
+          &__img{
+            max-width: 100%;
+            min-height: 25vw;
+          }
+          &__price{
+          }
+          &__name{
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .section{
+    &__filters{
+    }
+    &__products{
+      &__title{
+      }
+      &__list{
+        padding: 1.5vw 3vw 1.5vw 1.5vw;
+        grid-template-columns: repeat(2, 50%);
+        &__product{
+          height: calc(120vw/2);
+          overflow-y: scroll;
+          &__img{
+            max-width: 100%;
+            min-height: 45vw;
+          }
+          &__price{
+          }
+          &__name{
+          }
+        }
+      }
+    }
+  }
+}

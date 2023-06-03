@@ -1,5 +1,5 @@
 import styles from './Header.module.scss'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, Outlet} from 'react-router-dom'
 import { RxMagnifyingGlass, RxHamburgerMenu } from 'react-icons/rx'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from './Logo.png'
@@ -32,6 +32,13 @@ export default function Header() {
     }
   }
 
+  function handleNavigate(target: string){
+    if(popup){
+      togglePopup()
+    }
+    navigate(target)
+  }
+
   //POPUP TOGGLE FUNCTION
   function togglePopup() {
     setPopup(!popup)
@@ -51,56 +58,61 @@ export default function Header() {
   }, [])
 
   return (
-    <header className={styles.header}>
-      <img onClick={() => navigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo}/>
+    <>
+      <header className={styles.header}>
+        <img onClick={() => handleNavigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo} />
 
-      <span className={styles.header__searchbar}>
-        <input className={styles.header__searchbar__input} placeholder={'Pesquisar itens'}></input>
-        <button className={styles.header__searchbar__search}>
-          <RxMagnifyingGlass color='black' size={20} />
-        </button>
-      </span>
+        <span className={styles.header__searchbar}>
+          <input className={styles.header__searchbar__input} placeholder={'Pesquisar itens'}></input>
+          <button onClick={() => handleNavigate('/products')} className={styles.header__searchbar__searchbutton}>
+            <RxMagnifyingGlass color='black' size={20} />
+          </button>
+        </span>
 
-      <RxHamburgerMenu
-        id='navbutton'
-        size={20}
-        onClick={handleOnCLick}
-        aria-controls='nav'
-        aria-expanded='false'
-        className={styles.header__button}
-      />
+        <RxHamburgerMenu
+          id='navbutton'
+          size={20}
+          onClick={handleOnCLick}
+          aria-controls='nav'
+          aria-expanded='false'
+          className={styles.header__button}
+        />
 
-      <nav className={styles.header__nav} id='nav' data-visible='false'>
-        {customer?._id === "" ?
-          <Link className={styles.header__nav__link} to={'/userlogin'} aria-hidden="false">
-            Login
-          </Link> :
-          <div className={styles.header__nav__link} aria-hidden="false" onClick={() => togglePopup()}>
-            Olá, {customer?.name} <br />
-            <strong>Sua Conta</strong>
-          </div>}
+        <nav className={styles.header__nav} id='nav' data-visible='false'>
+          {customer?._id === "" ?
+            <Link className={styles.header__nav__link} to={'/userlogin'} aria-hidden="false">
+              Login
+            </Link> :
+            <div className={styles.header__nav__link} aria-hidden="false" onClick={() => togglePopup()}>
+              Olá, {customer?.name} <br />
+              <strong>Sua Conta</strong>
+            </div>}
 
-        {popup &&
-          <>
-            <div className={styles.popup} onClick={() => togglePopup()} />
-            <div className={styles.popup__popupArrow} />
-            <div className={styles.popup__popupInner}>
-              <button className={styles.popup__popupInner__popupBtn}>Meus produtos</button>
-              <button className={styles.popup__popupInner__popupBtn} onClick={() => navigate('/newproduct')}>Criar produto</button>
-              <button className={styles.popup__popupInner__popupBtn}>Modificar conta</button>
-              <button className={styles.popup__popupInner__popupBtn} onClick={logout}>Sair da conta</button>
-            </div>
-          </>
-        }
+          {popup &&
+            <>
+              <div className={styles.popup} onClick={() => togglePopup()} />
+              <div className={styles.popup__popupArrow} />
+              <div className={styles.popup__popupInner}>
+                <button className={styles.popup__popupInner__popupBtn}>Meus produtos</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/newproduct')}}>Criar produto</button>
+                <button className={styles.popup__popupInner__popupBtn}>Modificar conta</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={logout}>Sair da conta</button>
+              </div>
+            </>
+          }
 
-        <Link className={styles.header__nav__link} to={'/compras'} aria-hidden="false">
-          Compras <br />
-          <strong>Feitas</strong>
-        </Link>
-        <Link className={styles.header__nav__link} to={'/carrinho'} aria-hidden="false">
-          <AiOutlineShoppingCart size={40} />
-        </Link>
-      </nav>
-    </header>
+          <Link className={styles.header__nav__link} to={'/compras'} aria-hidden="false">
+            Compras <br />
+            <strong>Feitas</strong>
+          </Link>
+          <Link className={styles.header__nav__link} to={'/carrinho'} aria-hidden="false">
+            <AiOutlineShoppingCart size={40} />
+          </Link>
+        </nav>
+      </header>
+      <div>
+        <Outlet/>
+      </div>
+    </>
   )
 };

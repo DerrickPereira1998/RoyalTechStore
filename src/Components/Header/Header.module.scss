@@ -28,12 +28,16 @@
       margin-left: 1vw;
     }
 
-    &__search {
+    &__searchbutton {
       background-color: $blue3;
       padding-top: 4px;
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
       border: 0;
+      cursor: pointer;
+      &:hover{
+        background-color: $blue2;
+      }
     }
   }
 
@@ -155,7 +159,7 @@
         margin-top: 10px;
       }
   
-      &__search {
+      &__searchbutton {
         background-color: $blue3;
         padding-top: 4px;
         border-bottom-right-radius: 5px;
