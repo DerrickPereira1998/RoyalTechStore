@@ -8,6 +8,7 @@ import NewProduct from 'Pages/NewProduct';
 import Products from 'Pages/Products';
 import Header from 'Components/Header';
 import Footer from 'Components/Footer';
+import ProductDetails from 'Components/ProductDetails';
 
 function AppRouter() {
   return (
@@ -19,6 +20,7 @@ function AppRouter() {
             <Route path='myproducts' element={<MyProducts />}></Route>
             <Route path='newproduct' element={<NewProduct />}></Route>
             <Route path='products' element={<Products />}></Route>
+            <Route path='product/:product_id' element={<ProductDetails/>}></Route>
           </Route>
           <Route path='/userlogin' element={<UserPage />}></Route>
           <Route path='/usersignup' element={<UserSignUp />}></Route>

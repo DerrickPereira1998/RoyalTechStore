@@ -91,7 +91,7 @@ app.post("/customerData", async (req, res) => {
         res.send({ status: 'error', data: error })
       })
   } catch (error) {
-
+    console.log('Erro ao pegar dados de cliente: ', error)
   }
 })
 
@@ -130,7 +130,23 @@ app.get('/getAllProducts', async (req, res) => {
     const allProducts = await Product.find({});
     res.send({ status: 'ok', data: allProducts })
   } catch (e) {
-    resp.send("Error when getting all customers");
+    resp.send("Erro al pegar todos os clientes: ", e);
+  }
+})
+
+//GET ONE PRODUCT
+
+app.post("/getProductData", async (req, res) => {
+  const { product_id } = req.body
+  try {
+    Product.findById(product_id)
+      .then((data) => {
+        res.send({ status: 'ok', data: data })
+      }).catch((error) => {
+        res.send({ status: 'error', data: error })
+      })
+  } catch (error) {
+    console.log('erro ao receber produto: ', error)
   }
 })
 
