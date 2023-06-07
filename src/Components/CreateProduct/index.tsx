@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './CreateProduct.module.scss'
-import ICustomer from 'interfaces/ICustomer';
 import http from 'Utils/Http';
 import noImageJpg from 'img/No-Image.jpg'
 import {priceMask} from 'Utils/Mask';
+import { CustomerContext } from 'context/CustomerContext'
 
 export default function CreateProduct() {
 
-  const [customer, setCustomer] = useState<ICustomer>({ _id: "", name: "", email: "", password: "" })
+  const { customer } = useContext(CustomerContext)
   const [imageName, setImageName] = useState<string>("Escolha a imagem")
   const [image, setImage] = useState<any>("")
   const [title, setTitle] = useState<string>("")
@@ -68,13 +68,6 @@ export default function CreateProduct() {
       }
     }
   }
-
-  useEffect(() => {
-    //TOKEN RETRIVAL FUNCTION / USER LOGGED
-    http.post('customerData', { token: window.localStorage.getItem("token") })
-      .then(res => setCustomer(res.data.data))
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <section className={styles.section}>

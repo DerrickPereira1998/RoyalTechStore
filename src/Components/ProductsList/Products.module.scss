@@ -2,20 +2,23 @@
 @import "src/styles/colors";
 
 .section{
-  display: grid;
-  grid-template-columns: 20% 80%;
-  margin: 20px calc(2.5vw + 10px) 0 2vw;
-  gap: 1vw;
-  &__filters{
-    background-color: $darkblue2;
-    border: 1px solid $darkblue2;
-    border-radius: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 20px calc(1.5vw + 10px) 0 2vw;
   &__products{
-    &__title{
-      font-size: $titlefont;
-      font-weight: 900;
+    &__container{
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 10px;
+      &__filters{
+        background-color: lime;
+        border-radius: 10px;
+        width: 20vw;
+      }
+      &__title{
+        font-size: $titlefont;
+        font-weight: 900;
+      }
     }
     &__list{
       background-color: $white;

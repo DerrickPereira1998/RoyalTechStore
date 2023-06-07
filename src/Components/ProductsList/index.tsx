@@ -17,21 +17,23 @@ export default function ProductsList() {
   }, [])
 
   return (
-    <section className={styles.section} onClick={() => console.log("Produtos",products)}>
-      <div className={styles.section__filters}>
-        "ola"
-      </div>
+    <section className={styles.section} onClick={() => console.log("Produtos", products)}>
       <div className={styles.section__products}>
-        <p className={styles.section__products__title}>Resultados</p>
+        <div className={styles.section__products__container}>
+          <p className={styles.section__products__container__title}>Resultados</p>
+          <div className={styles.section__products__container__filters}>
+            Filtros
+          </div>
+        </div>
         <div className={styles.section__products__list}>
           {products.length >= 0 ? products.map((product, index) => {
-              return(
-                <div onClick={() => navigate(`/product/${product._id}`)} className={styles.section__products__list__product} key={index}>
-                  <img className={styles.section__products__list__product__img} src={product.imagem} alt={product._id}/>
-                  <p className={styles.section__products__list__product__price}>R$ {product.preco}</p>
-                  <p className={styles.section__products__list__product__name}>{product.titulo}</p>
-                </div>
-              )
+            return (
+              <div onClick={() => navigate(`/product/${product._id}`)} className={styles.section__products__list__product} key={index}>
+                <img className={styles.section__products__list__product__img} src={product.imagem} alt={product._id} />
+                <p className={styles.section__products__list__product__price}>R$ {product.preco}</p>
+                <p className={styles.section__products__list__product__name}>{product.titulo}</p>
+              </div>
+            )
           }) : "nothing here"}
         </div>
       </div>

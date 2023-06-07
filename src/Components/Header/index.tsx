@@ -3,14 +3,13 @@ import { Link, useNavigate, Outlet} from 'react-router-dom'
 import { RxMagnifyingGlass, RxHamburgerMenu } from 'react-icons/rx'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from './Logo.png'
-import ICustomer from 'interfaces/ICustomer'
-import { useEffect, useState } from 'react'
-import http from 'Utils/Http'
+import { useState, useContext } from 'react'
+import { CustomerContext } from 'context/CustomerContext'
 
 export default function Header() {
 
   const [popup, setPopup] = useState<Boolean>(false)
-  const [customer, setCustomer] = useState<ICustomer>({ _id: "", name: "", email: "", password: "" })
+  const { customer, setCustomer } = useContext(CustomerContext)
 
   const navigate = useNavigate()
 
@@ -49,13 +48,6 @@ export default function Header() {
     togglePopup()
     setCustomer({ _id: "", name: "", email: "", password: "" })
   }
-
-  useEffect(() => {
-    //TOKEN RETRIVAL FUNCTION / USER LOGGED
-    http.post('customerData', { token: window.localStorage.getItem("token") })
-      .then(res => setCustomer(res.data.data))
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <>
