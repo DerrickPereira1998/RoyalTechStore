@@ -8,7 +8,7 @@ import { Context } from 'context/Context'
 
 export default function CreateProduct() {
 
-  const { customer } = useContext(Context)
+  const { customer, products, setProducts } = useContext(Context)
   const [imageName, setImageName] = useState<string>("Escolha a imagem")
   const [image, setImage] = useState<any>("")
   const [title, setTitle] = useState<string>("")
@@ -50,8 +50,8 @@ export default function CreateProduct() {
     if(image !== '' && price.length >= 4){
       try {
         await http.post('registerProduct', { imagem, titulo, descricao, preco, user_id })
-        console.log("file sent", imagem)
         navigate('/')
+        setProducts([products, { imagem, titulo, descricao, preco, user_id }])
       } catch (error) {
         console.log('error on submit: ', error)
       }

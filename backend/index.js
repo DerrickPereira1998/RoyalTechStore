@@ -130,7 +130,7 @@ app.get('/getAllProducts', async (req, res) => {
     const allProducts = await Product.find({});
     res.send({ status: 'ok', data: allProducts })
   } catch (e) {
-    resp.send("Erro al pegar todos os clientes: ", e);
+    res.send({ status: 'error', data: e});
   }
 })
 

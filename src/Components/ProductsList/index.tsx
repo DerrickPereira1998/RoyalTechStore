@@ -1,21 +1,14 @@
 import IProduct from 'interfaces/IProduct'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import styles from './Products.module.scss'
-import http from 'Utils/Http'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Context } from 'context/Context'
 
 export default function ProductsList() {
-  const [products, setProducts] = useState<Array<IProduct>>([])
 
+  const { products } = useContext(Context)
   const { query } = useParams()
-  
   const navigate = useNavigate()
-
-  useEffect(() => {
-    http.get('getAllProducts')
-      .then(res => setProducts(res.data.data))
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <section className={styles.section} onClick={() => console.log("Produtos", products)}>
@@ -27,15 +20,16 @@ export default function ProductsList() {
           </div>
         </div>
         <div className={styles.section__products__list}>
-          {(products.length >= 0) ? products.filter((item) => item.titulo.toLowerCase().includes(query || "")).map((product, index) => {
+          {products.filter((product: IProduct) => product.titulo.toLowerCase().includes(query || "")).length !== 0 ? 
+            products.filter((product: IProduct) => product.titulo.toLowerCase().includes(query || "")).map((product: IProduct) => {
             return (
-              <div onClick={() => navigate(`/product/${product._id}`)} className={styles.section__products__list__product} key={index}>
+              <div onClick={() => navigate(`/product/${product._id}`)} className={styles.section__products__list__product} key={product._id}>
                 <img className={styles.section__products__list__product__img} src={product.imagem} alt={product._id} />
                 <p className={styles.section__products__list__product__price}>R$ {product.preco}</p>
                 <p className={styles.section__products__list__product__name}>{product.titulo}</p>
               </div>
             )
-          }) : "nothing here"}
+          }) : ''}
         </div>
       </div>
     </section>
