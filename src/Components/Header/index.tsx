@@ -4,12 +4,14 @@ import { RxMagnifyingGlass, RxHamburgerMenu } from 'react-icons/rx'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import logo from './Logo.png'
 import { useState, useContext } from 'react'
-import { CustomerContext } from 'context/CustomerContext'
+import { Context } from 'context/Context'
 
 export default function Header() {
 
   const [popup, setPopup] = useState<Boolean>(false)
-  const { customer, setCustomer } = useContext(CustomerContext)
+  const [query, setQuery] = useState<string>('')
+
+  const { customer, setCustomer } = useContext(Context)
 
   const navigate = useNavigate()
 
@@ -35,7 +37,11 @@ export default function Header() {
     if(popup){
       togglePopup()
     }
-    navigate(target)
+    if(target === '/products/'){
+      navigate('/products/#')
+    } else {
+      navigate(target)
+    }
   }
 
   //POPUP TOGGLE FUNCTION
@@ -47,6 +53,7 @@ export default function Header() {
     window.localStorage.clear()
     togglePopup()
     setCustomer({ _id: "", name: "", email: "", password: "" })
+    window.location.reload()
   }
 
   return (
@@ -55,8 +62,8 @@ export default function Header() {
         <img onClick={() => handleNavigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo} />
 
         <span className={styles.header__searchbar}>
-          <input className={styles.header__searchbar__input} placeholder={'Pesquisar itens'}></input>
-          <button onClick={() => handleNavigate('/products')} className={styles.header__searchbar__searchbutton}>
+          <input className={styles.header__searchbar__input} placeholder={'Pesquisar produtos'} value={query} onChange={(e) => setQuery(e.target.value)}></input>
+          <button onClick={() => handleNavigate(`/products/${query}`)} className={styles.header__searchbar__searchbutton}>
             <RxMagnifyingGlass color='black' size={20} />
           </button>
         </span>

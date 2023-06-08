@@ -78,8 +78,8 @@
 .img{
   width: max(25vw, 260px);
   height: max(25vw, 260px);
-  border: 1px dashed $black;
   margin: 10px 0 10px 0;
+  object-fit: contain;
 }
 
 @media(max-width: 800px){

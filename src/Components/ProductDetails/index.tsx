@@ -3,12 +3,12 @@ import styles from './ProductDetails.module.scss'
 import { useEffect, useState, useContext } from 'react'
 import IProduct from 'interfaces/IProduct'
 import http from 'Utils/Http'
-import { CustomerContext } from 'context/CustomerContext'
+import { Context } from 'context/Context'
 
 export default function ProductDetails() {
 
   const { product_id } = useParams()
-  const { customer } = useContext(CustomerContext)
+  const { customer } = useContext(Context)
 
   const [product, setProduct] = useState<IProduct>()
 

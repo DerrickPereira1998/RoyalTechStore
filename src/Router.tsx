@@ -1,25 +1,25 @@
 import styles from 'styles/App.module.scss'
 import { useEffect,  useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainPage from "./Pages/MainPage";
 import UserPage from "Pages/UserLogin";
 import UserSignUp from 'Pages/UserSignUp';
 import MyProducts from 'Pages/MyProducts';
 import NewProduct from 'Pages/NewProduct';
-import Products from 'Pages/Products';
+import ProductsList from 'Components/ProductsList';
 import Header from 'Components/Header';
 import Footer from 'Components/Footer';
 import ProductDetails from 'Components/ProductDetails';
-import { CustomerContext } from 'context/CustomerContext'
+import { Context } from 'context/Context'
+import MainPage from 'Components/MainPage';
 
 function AppRouter() {
 
-  const { getCustomer } = useContext(CustomerContext)
+  const { getCustomer } = useContext(Context)
 
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
     getCustomer()
-  }, [getCustomer])
+  })
 
   return (
     <main className={styles.back}>
@@ -29,7 +29,8 @@ function AppRouter() {
             <Route index element={<MainPage />}></Route>
             <Route path='myproducts' element={<MyProducts />}></Route>
             <Route path='newproduct' element={<NewProduct />}></Route>
-            <Route path='products' element={<Products />}></Route>
+            <Route path='products/' element={<ProductsList />}></Route>
+            <Route path='products/:query' element={<ProductsList />}></Route>
             <Route path='product/:product_id' element={<ProductDetails/>}></Route>
           </Route>
           <Route path='/userlogin' element={<UserPage />}></Route>

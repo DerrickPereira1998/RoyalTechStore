@@ -1,21 +1,30 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import styles from './UserGet.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import http from 'Utils/Http';
+import { Context } from 'context/Context'
 
 export default function UserGet() {
 
   const navigate = useNavigate()
 
+  const { getCustomer } = useContext(Context)
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function timeout(delay: number) {
+    return new Promise( res => setTimeout(res, delay) );
+  }
+
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-      http.post('customerLogin', {email, password})
+    http.post('customerLogin', { email, password })
       .then(res => window.localStorage.setItem("token", res.data.data))
       .catch(err => console.log("Erro ao logar cliente", err))
+    await timeout(500)
     navigate('/')
+    window.location.reload()
   }
 
   return (
@@ -40,13 +49,13 @@ export default function UserGet() {
           Login
         </button>
         <span className={styles.form__notsigned}>
-        <p className={styles.form__notsigned__text}>
-          Não possui cadastro?
-        </p>
-        <Link className={styles.form__notsigned__link} to={'/usersignup'}>
-          Se inscreva!
-        </Link>
-      </span>
+          <p className={styles.form__notsigned__text}>
+            Não possui cadastro?
+          </p>
+          <Link className={styles.form__notsigned__link} to={'/usersignup'}>
+            Se inscreva!
+          </Link>
+        </span>
       </form>
     </section>
   )

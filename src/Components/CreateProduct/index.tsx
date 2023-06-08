@@ -4,11 +4,11 @@ import styles from './CreateProduct.module.scss'
 import http from 'Utils/Http';
 import noImageJpg from 'img/No-Image.jpg'
 import {priceMask} from 'Utils/Mask';
-import { CustomerContext } from 'context/CustomerContext'
+import { Context } from 'context/Context'
 
 export default function CreateProduct() {
 
-  const { customer } = useContext(CustomerContext)
+  const { customer } = useContext(Context)
   const [imageName, setImageName] = useState<string>("Escolha a imagem")
   const [image, setImage] = useState<any>("")
   const [title, setTitle] = useState<string>("")

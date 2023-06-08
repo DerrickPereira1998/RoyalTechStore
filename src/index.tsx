@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './Router';
 import { RecoilRoot } from 'recoil';
-import { ThemeProvider } from 'context/CustomerContext';
+import { ThemeProvider } from 'context/Context';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
