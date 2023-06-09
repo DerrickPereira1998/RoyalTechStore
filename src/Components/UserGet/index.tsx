@@ -24,7 +24,6 @@ export default function UserGet() {
       .catch(err => console.log("Erro ao logar cliente", err))
     await timeout(500)
     navigate('/')
-    window.location.reload()
   }
 
   return (

@@ -14,12 +14,13 @@ import MainPage from 'Components/MainPage';
 
 function AppRouter() {
 
-  const { getCustomer, getProducts } = useContext(Context)
+  const {customer, getCustomer, getProducts } = useContext(Context)
 
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
     getCustomer()
     getProducts()
+    console.log(customer)
   },[getProducts])
 
   return (
