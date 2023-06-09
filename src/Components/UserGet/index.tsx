@@ -23,6 +23,7 @@ export default function UserGet() {
       .then(res => window.localStorage.setItem("token", res.data.data))
       .catch(err => console.log("Erro ao logar cliente", err))
     await timeout(500)
+    await getCustomer()
     navigate('/')
   }
 
