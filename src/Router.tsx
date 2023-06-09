@@ -20,8 +20,7 @@ function AppRouter() {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
     getCustomer()
     getProducts()
-    console.log(customer)
-  },[getProducts])
+  },[getProducts, getCustomer])
 
   return (
     <main className={styles.back}>
