@@ -1,20 +1,24 @@
 import IProduct from 'interfaces/IProduct'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import styles from './Products.module.scss'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Context } from 'context/Context'
 
 export default function ProductsList() {
 
-  const { products } = useContext(Context)
+  const { products, getProducts } = useContext(Context)
   const { query } = useParams()
   const navigate = useNavigate()
 
+  useEffect(() => {
+    getProducts()
+  })
+
   return (
-    <section className={styles.section} onClick={() => console.log("Produtos", products)}>
+    <section className={styles.section}>
       <div className={styles.section__products}>
         <div className={styles.section__products__container}>
-          <p className={styles.section__products__container__title} onClick={() => console.log(products)}>Resultados</p>
+          <p className={styles.section__products__container__title}>Resultados</p>
           <div className={styles.section__products__container__filters}>
             Ordenadores
           </div>

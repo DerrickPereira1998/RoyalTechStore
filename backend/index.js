@@ -154,7 +154,6 @@ app.post("/getProductData", async (req, res) => {
 
 app.post("/registerProduct", async (req, res) => {
   const {imagem, titulo, descricao, preco, user_id} = req.body
-  console.log('isso aqui', titulo)
   try {
     await Product.create({imagem, titulo, descricao, preco, user_id})
     res.status.send(201).json({msg: "New image uploaded!"})
