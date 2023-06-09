@@ -22,7 +22,6 @@ export default function CreateProduct() {
 
   const handleprice = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(e.target.value)
-    console.log(price)
   }
 
   const onFileChange = async (e: any) => {
@@ -46,12 +45,16 @@ export default function CreateProduct() {
   }
 
   const submitFileData = async (e:any ,imagem: string, titulo: string, descricao: string, preco: string, user_id: string) => {
+    console.log('sei')
     e.preventDefault()
     if(image !== '' && price.length >= 4){
       try {
+        console.log('sei2')
         await http.post('registerProduct', { imagem, titulo, descricao, preco, user_id })
+        console.log('sei3')
         navigate('/')
         setProducts([products, { imagem, titulo, descricao, preco, user_id }])
+        console.log('sei4')
       } catch (error) {
         console.log('error on submit: ', error)
       }
