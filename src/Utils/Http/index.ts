@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //Pega a porta a ser usada
-const PORT = 'http://localhost:5000/' // || 'https://royal-tech-store.onrender.com/'
+const PORT = 'https://royal-tech-store.onrender.com/' // || 'http://localhost:5000/' 
 const http = axios.create({
     baseURL: PORT
 })
