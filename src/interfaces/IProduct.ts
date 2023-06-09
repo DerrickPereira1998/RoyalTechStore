@@ -4,7 +4,7 @@ export default interface IProduct {
     titulo: string
     descricao: string
     preco: string
-    nota: Number
-    user_id: string
-    data: Date
+    nota?: Number
+    user_id?: string
+    data?: Date
 }

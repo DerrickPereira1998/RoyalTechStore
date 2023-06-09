@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './CreateProduct.module.scss'
 import http from 'Utils/Http';
-import noImageJpg from 'img/No-Image.jpg'
+import noImageJpg from './No-Image.jpg'
 import {priceMask} from 'Utils/Mask';
 import { Context } from 'context/Context'
 

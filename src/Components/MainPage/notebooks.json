@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "6482b0a15953e6cb5d140795",
+    "imagem": "assets/notebooks/Zamzung.jpg",
+    "titulo": "Zamzung Book",
+    "descricao": "O notebook da mais nova linha da Zamzung! esta maquina é ideal para qualquer um que procura custo-beneficio em seu aparelhos, sendo capaz de rodar muito bem até as aplicações mais robustas por um preço acessível.",
+    "preco": "3,799.99"
+  },
+  {
+    "_id": "64836a290a819a2d593f76ec",
+    "imagem": "assets/notebooks/Chromebook.jpg",
+    "titulo": "Joogle Chromebook",
+    "descricao": "Chega a Royal tech store a mais nova sensação da famosa Joogle! Este novo notebook top de linha é capaz de rodar filmes e jogos e suas configurações mais altas com seu processador de oito núcleos e sua memória SSD de 500MB, uma escolha ideal para qualquer um que queira uma experiência top de linha sem se importar muito com custo.",
+    "preco": "11,999.99"
+  },
+  {
+    "_id": "64836ec00a819a2d593f76f7",
+    "imagem": "assets/notebooks/Inspiron.jpg",
+    "titulo": "Cell Inspiron",
+    "descricao": "Notebook da marca cell, devido a seu processado snapdrake dual-core é capaz de rodar decentemente a maioria dos programas, vem instalado com o sistema Linux de fabrica.",
+    "preco": "2,899.99"
+  },
+  {
+    "_id": "648374e10a819a2d593f76f9",
+    "imagem": "assets/notebooks/Mac.jpg",
+    "titulo": "Pinapple Mac M2 max",
+    "descricao": "A mais nova versão do mac criado pela Pineapple, com seu processador intelcore i7 ele é a escolha ideal para quem procura trabalhar com uma decente maquina.",
+    "preco": "3,499.99"
+  },
+  {
+    "_id": "648377470a819a2d593f76fd",
+    "imagem": "assets/notebooks/Renovo.jpg",
+    "titulo": "Renovo Ideapad Notebook",
+    "descricao": "A mais nova maquina de jogos da Renovo, com configurações avançadas instaladas de fábrica para disponibilizar ao usuário o maior conforto possível ao jogar em qualquer tipo de ambiente.",
+    "preco": "4,999.99"
+  }
+]
