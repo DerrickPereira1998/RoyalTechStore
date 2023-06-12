@@ -1,6 +1,7 @@
 import IProduct from 'interfaces/IProduct'
 import styles from './MainPage.module.scss'
 import notebooks from './notebooks.json'
+import { Link } from 'react-router-dom'
 
 export default function MainPage() {
   
@@ -9,12 +10,17 @@ export default function MainPage() {
   return (
     <>
       <section className={styles.flex}>
+        <p className={styles.title}>Notebooks mais vendidos</p>
         <div className={styles.content} onClick={() => console.log(lista)}>
-          {lista.map((item: IProduct) =>
-            <div className={styles.content__product} key={item._id}>
-              <img className={styles.content__product__img} src={item.imagem} alt={item.titulo}/>
-              {item.descricao}
-            </div>
+          {lista.map((item: IProduct, index) =>
+            <Link to={`/product/${item._id}`} className={styles.content__product} key={index}>
+              <img className={index === 0 || index === 4 ? styles.content__product__img2 : styles.content__product__img} src={item.imagem} alt={item.titulo}/>
+              <p className={styles.content__product__price}>{item.preco}</p>
+              <div className={index % 2 === 0 ? styles.content__product__info : styles.none}>
+                <p className={styles.content__product__info__title}>{item.titulo}</p>
+                <p className={styles.content__product__info__desc}>{item.descricao}</p>
+              </div>
+            </Link>
           )}
         </div>
       </section>

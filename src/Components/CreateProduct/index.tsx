@@ -55,7 +55,7 @@ export default function CreateProduct() {
       }
     } else{
       if(image === ''){
-        setImageErr('selecione uma imagem')
+        setImageErr('selecione uma imagem (jpg, jpeg, png)')
       } else{
         setImageErr('')
       }

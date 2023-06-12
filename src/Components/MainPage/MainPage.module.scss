@@ -2,49 +2,184 @@
 @import "src/styles/colors";
 
 .flex {
-  padding: 20px 20px 0 20px;
+  padding: 20px 20px 20px 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.title{
+    font-size: $titlefont;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .content {
-  background-color: $white;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  width: 1200px;
-  border: 1px solid $white;
-  border-radius: 10px;
-  padding: 10px 10px 10px 10px;
+  gap: 30px;
+  max-width: 1100px;
+  margin-right: 22px;
   &__product{
+    position: relative;
+    background-color: $lightblue2;
+    color: $black;
     width: 100%;
-    height: calc(90vw/4);
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: 0.3s;
     cursor: pointer;
-    border: 1px solid green;
-    font-size: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
     &:first-child{
+      color: $white;
+      @include custom-gradient(rgb(163, 92, 234), rgb(134, 32, 172));
       grid-column-start: 1;
       grid-column-end: 3;
+      flex-direction: row;
     }
     &:nth-child(3){
+      color: $white;
+      @include custom-gradient(rgb(97, 97, 97), rgb(17, 17, 17));
       grid-column-start: 4;
       grid-column-end: 5;
       grid-row-start: 1;
       grid-row-end: 3;
-      height: calc(90vw/2);
+      height: 100%;
     }
     &:last-child{
+      color: $white;
+      @include custom-gradient(rgb(85, 137, 215),rgb(5, 84, 175));
       grid-column-start: 2;
       grid-column-end: 4;
+      flex-direction: row;
     }
     &__img{
-      max-width: 100%;
-      min-height: 18vw;
+      width: 100%;
+      height: auto;
+    }
+    &__img2{
+      width: 50%;
+      height: auto;
+    }
+    &__price{
+      color: $black;
+      background-color: #ffffff;
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 4px 8px;
+      font-size: 12px;
+      line-height: 16px;
+      border-radius: 4px;
+    }
+    &__info{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 50%;
+      padding: 6px;
+      &__title{
+        font-size: $titlefont;
+        font-weight: 500;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+      &__desc{
+        font-size: $detailfont;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.none{
+  display: none;
+}
+
+@media(max-width: 800px){
+  .content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 18px;
+    max-width: 1100px;
+    margin-right: 10px;
+    &__product{
+      position: relative;
+      background-color: $lightblue2;
+      color: $black;
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 5px;
+      border-radius: 10px;
+      &:first-child{
+        color: $white;
+        @include custom-gradient(rgb(163, 92, 234), rgb(134, 32, 172));
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        flex-direction: column;
+      }
+      &:nth-child(3){
+        color: $white;
+        @include custom-gradient(rgb(97, 97, 97), rgb(17, 17, 17));
+        grid-row-start: 4;
+        grid-row-end: 5;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        height: 100%;
+        flex-direction: row;
+      }
+      &:last-child{
+        color: $white;
+        @include custom-gradient(rgb(85, 137, 215),rgb(5, 84, 175));
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        flex-direction: column;
+      }
+      &__img{
+        width: 40vw;
+        height: auto;
+      }
+      &__img2{
+        width: 40vw;
+        height: auto;
+      }
+      &__info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        padding: 6px;
+        &__title{
+          font-size: $titlefont;
+          font-weight: 500;
+          margin-bottom: 20px;
+          opacity: 0.9;
+        }
+        &__desc{
+          font-size: $detailfont;
+          opacity: 0.8;
+          margin-bottom: 20px;
+        }
+      }
     }
   }
 }
