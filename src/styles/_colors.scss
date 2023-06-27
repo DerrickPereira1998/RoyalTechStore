@@ -36,3 +36,18 @@ $titlefont: 30px;
 @mixin custom-gradient($color1, $color2){
   background: linear-gradient(135deg,  $color1, $color2);
 }
+
+.loading{
+  animation: is-rotating 0.8s infinite linear;
+  border: 6px solid #e5e5e5;
+  border-top-color: $blue1;
+  border-radius: 30px;
+  height: 30px;
+  width: 30px;
+}
+
+@keyframes is-rotating{
+  to {
+    transform: rotate(1turn)
+  }
+}

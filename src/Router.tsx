@@ -19,14 +19,14 @@ function AppRouter() {
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
     getCustomer()
-  },[])
+  }, [])
 
   return (
     <main className={styles.back}>
       <Router>
         <Routes>
           <Route path='/' element={<Header/>}>
-            <Route index element={<MainPage />}></Route>
+            <Route index element={<MainPage/>}></Route>
             <Route path='myproducts' element={<MyProducts />}></Route>
             <Route path='newproduct' element={<NewProduct />}></Route>
             <Route path='products/' element={<ProductsList />}></Route>

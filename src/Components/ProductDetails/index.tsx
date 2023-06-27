@@ -1,21 +1,22 @@
 import { useParams } from 'react-router-dom'
 import styles from './ProductDetails.module.scss'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import IProduct from 'interfaces/IProduct'
-import { Context } from 'context/Context'
+import http from 'Utils/Http'
 
 export default function ProductDetails() {
 
   const { product_id } = useParams()
-  const { customer, products } = useContext(Context)
 
   const [product, setProduct] = useState<IProduct>()
 
   useEffect(() => {
     if(product_id){
-      setProduct(products.filter((prod: IProduct) => prod._id === product_id)[0])
+      http.post('getProductData', {product_id})
+      .then(res => setProduct(res.data.data))
+      .catch(err => console.log(err))
     }
-  }, [products, product_id])
+  }, [product_id])
 
   return (
     <>
