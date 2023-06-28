@@ -1,0 +1,85 @@
+@import "src/styles/reset";
+@import "src/styles/colors";
+
+.section{
+  position: relative;
+  max-width: 1100px;
+  margin: 500px;
+  height: 280px;
+  margin: 10px auto 0 auto;
+  &__container{
+    overflow: hidden;
+    justify-content: center;
+    &__slides{
+      display: flex;
+      flex-wrap: wrap;
+      height: 280px;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    &__slide{
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background-position: center;
+      background-size: cover;
+    }
+  }  
+  &__arrows{
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 45px;
+    color: $white;
+    right: 32px;
+    z-index: 10;
+    cursor: pointer;
+    &:last-child{
+      left: 32px;
+    }
+    &::selection {
+      color: none;
+      background: none;
+    }
+  }
+}
+
+.dots{
+  display: flex;
+  justify-content: center; 
+  &__dot{
+    margin: 0 1px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+}
+
+@media(max-width: 1100px) {
+  .section__container{
+    margin: 10px 20px 0 20px;
+  }
+}
+
+@media(max-width: 800px) {
+  .section{
+    height: 200px;
+    &__container{
+      &__slides{
+        height: 200px;
+      }
+    }
+    &__arrows{
+      width: 30px;
+      font-size: 32px;
+      right: 16px;
+      &:first-child{
+        left: 16px;
+      }
+      &::selection {
+        color: none;
+        background: none;
+      }
+    }
+  }
+}
