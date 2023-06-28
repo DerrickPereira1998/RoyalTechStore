@@ -53,6 +53,12 @@
     cursor: pointer;
     font-size: 15px;
   }
+  &__currentdot{
+    margin: 0 1px;
+    cursor: pointer;
+    font-size: 15px;
+    color: $white;
+  }
 }
 
 @media(max-width: 1100px) {

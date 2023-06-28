@@ -16,11 +16,11 @@ export default function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const goToNext = () => {
-    {currentIndex === (slides.length - 1) ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)}
+    currentIndex === (slides.length - 1) ? setCurrentIndex(0) : setCurrentIndex(currentIndex + 1)
   }
 
   const goToPrevious = () => {
-    {currentIndex === 0 ? setCurrentIndex(slides.length - 1) : setCurrentIndex(currentIndex - 1)}
+    currentIndex === 0 ? setCurrentIndex(slides.length - 1) : setCurrentIndex(currentIndex - 1)
   }
 
   const goToSlide = (slideIndex: number) => {
@@ -44,24 +44,9 @@ export default function Slider() {
       </div>
       <div className={styles.dots}>
         {slides.map((slide, slideIndex) => (
-          <div key={slideIndex} className={styles.dots__dot} onClick={() => goToSlide(slideIndex)}>●</div>
+          <div key={slideIndex} className={currentIndex === slideIndex ? styles.dots__currentdot : styles.dots__dot} onClick={() => goToSlide(slideIndex)}>●</div>
         ))}
       </div>
     </div>
   )
 };
-
-/*
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-position: center;
-    background-size: cover;
-
-            <div className={styles.container__arrows} onClick={goToPrevious}>
-          ❰
-        </div>
-        <div className={styles.container__arrows} onClick={goToNext}>
-          ❱
-        </div>
-*/
