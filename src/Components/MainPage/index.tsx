@@ -1,10 +1,12 @@
 import MainProducts from "./MainProducts";
-import Slider from "./Slider";
+import Carousel from "./Carousel";
+import Cellphones from "./Cellphones";
 
 export default function MainPage() {
   return (
     <>
-      <Slider/>
+      <Carousel/>
+      <Cellphones/>
       <MainProducts/>
     </>
   )

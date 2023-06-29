@@ -1,17 +1,14 @@
 import { useState } from 'react'
 import styles from './Slider.module.scss'
+import { Link } from 'react-router-dom'
 
-interface slide{
-  url: string
-}
-
-export default function Slider() {
+export default function Carousel() {
 
   const location = window.location.origin
-  const slides = [{url: `${location}/assets/slider/image-1.jpg`},
-                  {url: `${location}/assets/slider/image-2.jpg`},
-                  {url: `${location}/assets/slider/image-3.jpg`},
-                  {url: `${location}/assets/slider/image-4.jpg`}]
+  const slides = [{url: `${location}/assets/carousel/Carousel1.png`},
+                  {url: `${location}/assets/carousel/Carousel2.png`},
+                  {url: `${location}/assets/carousel/Carousel3.png`},
+                  {url: `${location}/assets/carousel/Carousel4.png`}]
 
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -31,9 +28,10 @@ export default function Slider() {
     <div className={styles.section}>
       <div className={styles.section__container}>
         <div className={styles.section__container__slides} style={{ transform: `translate(0,-${currentIndex * 100}%)`}}>
-          {slides.map((slide: slide) => (
-            <span className={styles.section__container__slide} style={{ backgroundImage: `url(${slide.url})`}}></span>
-          ))}
+          <span className={styles.section__container__slide} style={{ backgroundImage: `url(${slides[0].url})`}}></span>
+          <Link to={'/products/'} className={styles.section__container__slide} style={{ backgroundImage: `url(${slides[1].url})`}}></Link>
+          <Link to={'/products/celular'} className={styles.section__container__slide} style={{ backgroundImage: `url(${slides[2].url})`}}></Link>
+          <Link to={'/products/aparelho'} className={styles.section__container__slide} style={{ backgroundImage: `url(${slides[3].url})`}}></Link>
         </div>
         <div className={styles.section__arrows} onClick={goToNext}>
           ❱
