@@ -11,7 +11,7 @@ export default function MainProducts() {
     <>
       <section className={styles.flex}>
         <p className={styles.title}>Notebooks mais vendidos</p>
-        <div className={styles.content} onClick={() => console.log(lista)}>
+        <div className={styles.content}>
           {lista.map((item: IProduct, index) =>
             <Link to={`/product/${item._id}`} className={styles.content__product} key={index}>
               <img className={index === 0 || index === 4 ? styles.content__product__img2 : styles.content__product__img} src={item.imagem} alt={item.titulo}/>

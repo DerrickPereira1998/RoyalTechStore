@@ -50,8 +50,7 @@ app.get("/", (req, resp) => {
 });
 
 //CUSTOMERS
-
-require('./models/Customer')
+require('./models/Customers')
 const User = mongoose.model('customers');
 User.createIndexes();
 
@@ -102,7 +101,6 @@ app.post("/registerCustomer", async (req, res) => {
   const encryptedPassword = await bcrypt.hash(password, 5)
   try {
     const oldUser = await User.findOne({ email })
-    console.log(email)
     if (oldUser) {
       return res.send({ error: "User exists" })
     }
@@ -111,7 +109,6 @@ app.post("/registerCustomer", async (req, res) => {
       name,
       password: encryptedPassword,
     });
-    console.log(encryptedPassword)
     res.send({ status: "ok" });
   } catch (e) {
     res.send({ status: `error: ${e}` });
@@ -119,12 +116,11 @@ app.post("/registerCustomer", async (req, res) => {
 });
 
 //PRODUCTS
-
-//GET ALL PRODUCTS
 require('./models/Products')
 const Product = mongoose.model('products');
 Product.createIndexes();
 
+//GET ALL PRODUCTS
 app.get('/getAllProducts', async (req, res) => {
   try {
     const allProducts = await Product.find({});
@@ -157,6 +153,23 @@ app.post("/registerProduct", async (req, res) => {
   try {
     await Product.create({imagem, titulo, descricao, preco, user_id})
     res.status.send(201).json({msg: "New image uploaded!"})
+  } catch (e) {
+    res.send({ status: `error: ${e}` });
+  }
+});
+
+//ORDERS
+require('./models/Orders')
+const Order = mongoose.model('orders');
+Order.createIndexes();
+
+//CREATE ORDER
+
+app.post("/registerOrder", async (req, res) => {
+  const {customer_id, product_id} = req.body
+  try {
+    await Order.create({customer_id, product_id})
+    res.status.send(201).json({msg: "Order completed!"})
   } catch (e) {
     res.send({ status: `error: ${e}` });
   }

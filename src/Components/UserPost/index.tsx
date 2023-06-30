@@ -27,7 +27,7 @@ export default function UserPost() {
       setPassword("");
       setName("");
       setEmail("")
-      navigate('/teste')
+      navigate('/')
     } else {
       if(!validateName.test(name)){
         setNameErr('O nome deve ter de 3 a 12 letras, contendo letras ou espaços.')
