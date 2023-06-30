@@ -12,19 +12,15 @@ export default function ProductsList() {
   const { query } = useParams()
   const navigate = useNavigate()
 
-  const click = () => {
-    console.log(products.length)
-  }
-
   useEffect(() => {
     getProducts()
-  }, [])
+  },[])
 
   return (
     <section className={styles.section}>
       <div className={styles.section__products}>
         <div className={styles.section__products__container}>
-          <p className={styles.section__products__container__title} onClick={click}>Resultados</p>
+          <p className={styles.section__products__container__title}>Resultados</p>
           <div className={styles.section__products__container__filters}>
             Ordenadores
           </div>

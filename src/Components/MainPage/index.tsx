@@ -6,8 +6,8 @@ export default function MainPage() {
   return (
     <>
       <Carousel/>
-      <Cellphones/>
       <MainProducts/>
+      <Cellphones/>
     </>
   )
 };

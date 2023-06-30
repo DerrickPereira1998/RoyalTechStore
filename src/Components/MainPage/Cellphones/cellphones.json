@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "649ee490a578a27d08707b91",
+    "imagem": "assets/cellphones/Chiaomi.png",
+    "titulo": "",
+    "descricao": "",
+    "preco": "699.99"
+  },
+  {
+    "_id": "649ee501a578a27d08707b95",
+    "imagem": "assets/cellphones/Hasus.png",
+    "titulo": "",
+    "descricao": "",
+    "preco": "3,869.10"
+  },
+  {
+    "_id": "649ee5f1a578a27d08707b99",
+    "imagem": "assets/cellphones/Hooawei.png",
+    "titulo": "",
+    "descricao": "",
+    "preco": "1,279.99"
+  },
+  {
+    "_id": "649ee6a4a578a27d08707b9d",
+    "imagem": "assets/cellphones/Mokia.png",
+    "titulo": "",
+    "descricao": "",
+    "preco": "1,999.99"
+  },
+  {
+    "_id": "649ee7a7a578a27d08707ba1",
+    "imagem": "assets/cellphones/Pineapple.png",
+    "titulo": "",
+    "descricao": "",
+    "preco": "7,599.99"
+  },
+  {
+    "_id": "649ef7e9a578a27d08707bcd",
+    "imagem": "assets/cellphones/Zamzung.png",
+    "titulo": "",
+    "descricao": "",
+    "preco": "3,500.00"
+  }
+]

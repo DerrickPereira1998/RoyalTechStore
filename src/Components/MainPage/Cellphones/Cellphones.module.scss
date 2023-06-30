@@ -1,27 +1,83 @@
 @import "src/styles/reset";
 @import "src/styles/colors";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-*{
-  font-style: 'Poppins','sans-serif';
-} 
 
 .section{
+  padding: 0 20px;
+  margin-top: 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  &::selection {
+    color: none;
+    background: none;
+  }
+  &__title{
+    font-size: $titlefont;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
   &__wrapper{    
-    max-width: 1100px;
+    position: relative;
+    max-width: 1120px;
+    &__button{
+      position: absolute;
+      top: 35%;
+      height: 46px;
+      width: 46px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 46px;
+      transform: translateY(50%);
+      background: $white;
+      border-radius: 50%;
+      z-index: 9000;
+      &:hover{
+        background-color: $purple;
+      }
+      &:first-child{
+        left: 10px;
+      }
+      &:last-child{
+        right: 10px;
+      }
+    }
     &__carousel{
       white-space: nowrap;
       cursor: pointer;
       overflow: hidden;
-      &__img{
-        height: 300px;
-        object-fit: cover;
-        width: calc(100% / 3);
+      scroll-behavior: smooth;
+      &__link{
+        position: relative;
+        display: inline-block;
+        width: calc((100% - 30px) / 3);
         margin-left: 14px;
+        height: 300px;
+        &:first-child{
+          margin-left: 0px;
+        }
+        &__price {
+          color: $black;
+          background-color: #ffffff;
+          position: absolute;
+          left: 8px;
+          bottom: 0;
+          padding: 4px 8px;
+          font-size: 12px;
+          line-height: 16px;
+          border-radius: 4px;
+        }
+      }
+      &__img{
+        width: 100%;
+        pointer-events: none;
+        padding: 5px 0;
+        border: 1px solid $lightblue2;
+        border-radius: 10px;
+        background-color: $lightblue2;
+        height: 100%;
+        margin-bottom: 0;
+        object-fit: contain;
         &:first-child{
           margin-left: 0px;
         }
@@ -34,8 +90,8 @@
   .section{
     &__wrapper{    
       &__carousel{
-        &__img{
-          width: calc(100% / 2);
+        &__link{
+          width: calc((100% - 20px) / 2);
         }
       }
     }
@@ -46,7 +102,7 @@
   .section{
     &__wrapper{    
       &__carousel{
-        &__img{
+        &__link{
           width: calc(100%);
         }
       }

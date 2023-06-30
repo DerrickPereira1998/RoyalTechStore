@@ -2,17 +2,17 @@
 @import "src/styles/colors";
 
 .flex {
-  padding: 20px 20px 20px 20px;
+  padding: 50px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.title{
-    font-size: $titlefont;
-    font-weight: 700;
-    margin-bottom: 5px;
+.title {
+  font-size: $titlefont;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .content {
@@ -22,7 +22,8 @@
   gap: 30px;
   max-width: 1100px;
   margin-right: 22px;
-  &__product{
+
+  &__product {
     position: relative;
     background-color: $lightblue2;
     color: $black;
@@ -36,14 +37,16 @@
     padding: 10px;
     border-radius: 10px;
     text-decoration: none;
-    &:first-child{
+
+    &:first-child {
       color: $white;
       @include custom-gradient(rgb(163, 92, 234), rgb(134, 32, 172));
       grid-column-start: 1;
       grid-column-end: 3;
       flex-direction: row;
     }
-    &:nth-child(3){
+
+    &:nth-child(3) {
       color: $white;
       @include custom-gradient(rgb(97, 97, 97), rgb(17, 17, 17));
       grid-column-start: 4;
@@ -52,22 +55,26 @@
       grid-row-end: 3;
       height: 100%;
     }
-    &:last-child{
+
+    &:last-child {
       color: $white;
-      @include custom-gradient(rgb(85, 137, 215),rgb(5, 84, 175));
+      @include custom-gradient(rgb(85, 137, 215), rgb(5, 84, 175));
       grid-column-start: 2;
       grid-column-end: 4;
       flex-direction: row;
     }
-    &__img{
+
+    &__img {
       width: 100%;
       height: auto;
     }
-    &__img2{
+
+    &__img2 {
       width: 50%;
       height: auto;
     }
-    &__price{
+
+    &__price {
       color: $black;
       background-color: #ffffff;
       position: absolute;
@@ -78,20 +85,23 @@
       line-height: 16px;
       border-radius: 4px;
     }
-    &__info{
+
+    &__info {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 50%;
       padding: 6px;
-      &__title{
+
+      &__title {
         font-size: $titlefont;
         font-weight: 500;
         margin-bottom: 20px;
         opacity: 0.9;
       }
-      &__desc{
+
+      &__desc {
         font-size: $detailfont;
         opacity: 0.8;
       }
@@ -99,11 +109,11 @@
   }
 }
 
-.none{
+.none {
   display: none;
 }
 
-@media(max-width: 800px){
+@media(max-width: 800px) {
   .content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -111,7 +121,8 @@
     gap: 18px;
     max-width: 1100px;
     margin-right: 10px;
-    &__product{
+
+    &__product {
       position: relative;
       background-color: $lightblue2;
       color: $black;
@@ -125,7 +136,8 @@
       font-size: 16px;
       padding: 5px;
       border-radius: 10px;
-      &:first-child{
+
+      &:first-child {
         color: $white;
         @include custom-gradient(rgb(163, 92, 234), rgb(134, 32, 172));
         grid-row-start: 1;
@@ -134,7 +146,8 @@
         grid-column-end: 2;
         flex-direction: column;
       }
-      &:nth-child(3){
+
+      &:nth-child(3) {
         color: $white;
         @include custom-gradient(rgb(97, 97, 97), rgb(17, 17, 17));
         grid-row-start: 4;
@@ -144,37 +157,43 @@
         height: 100%;
         flex-direction: row;
       }
-      &:last-child{
+
+      &:last-child {
         color: $white;
-        @include custom-gradient(rgb(85, 137, 215),rgb(5, 84, 175));
+        @include custom-gradient(rgb(85, 137, 215), rgb(5, 84, 175));
         grid-row-start: 2;
         grid-row-end: 4;
         grid-column-start: 2;
         grid-column-end: 3;
         flex-direction: column;
       }
-      &__img{
+
+      &__img {
         width: 40vw;
         height: auto;
       }
-      &__img2{
+
+      &__img2 {
         width: 40vw;
         height: auto;
       }
-      &__info{
+
+      &__info {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 50%;
         padding: 6px;
-        &__title{
+
+        &__title {
           font-size: $titlefont;
           font-weight: 500;
           margin-bottom: 20px;
           opacity: 0.9;
         }
-        &__desc{
+
+        &__desc {
           font-size: $detailfont;
           opacity: 0.8;
           margin-bottom: 20px;
