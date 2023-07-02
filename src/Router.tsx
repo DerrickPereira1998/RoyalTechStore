@@ -11,6 +11,7 @@ import Footer from 'Components/Footer';
 import ProductDetails from 'Components/ProductDetails';
 import { Context } from 'context/Context'
 import MainPage from 'Components/MainPage';
+import Orders from 'Components/Orders';
 
 function AppRouter() {
 
@@ -29,7 +30,8 @@ function AppRouter() {
             <Route index element={<MainPage/>}></Route>
             <Route path='myproducts' element={<MyProducts />}></Route>
             <Route path='newproduct' element={<NewProduct />}></Route>
-            <Route path='products/' element={<ProductsList />}></Route>
+            <Route path='products' element={<ProductsList />}></Route>
+            <Route path='orders' element={<Orders />}></Route>
             <Route path='products/:query' element={<ProductsList />}></Route>
             <Route path='product/:product_id' element={<ProductDetails/>}></Route>
           </Route>

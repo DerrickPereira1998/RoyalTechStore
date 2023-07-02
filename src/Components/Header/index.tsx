@@ -100,7 +100,7 @@ export default function Header() {
             </>
           }
 
-          <Link className={styles.header__nav__link} to={'/compras'} aria-hidden="false">
+          <Link className={styles.header__nav__link} to={'/orders'} aria-hidden="false">
             Compras <br />
             <strong>Feitas</strong>
           </Link>

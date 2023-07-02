@@ -163,6 +163,18 @@ require('./models/Orders')
 const Order = mongoose.model('orders');
 Order.createIndexes();
 
+//GET ORDERS BY CUSTOMER
+app.post('/getOrderByCustomer', async (req, res) => {
+  const {customer_id} = req.body
+  const objectId = new mongoose.Types.ObjectId(customer_id);
+  try {
+    const customerOrders = await Order.find({ 'customer_id': objectId});
+    res.send({ status: 'ok', data: customerOrders })
+  } catch (e) {
+    res.send({ status: 'error', data: e});
+  }
+})
+
 //CREATE ORDER
 
 app.post("/registerOrder", async (req, res) => {
