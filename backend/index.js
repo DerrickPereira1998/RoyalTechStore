@@ -55,7 +55,6 @@ const User = mongoose.model('customers');
 User.createIndexes();
 
 // LOGIN DE USUARIOS
-
 app.post('/customerLogin', async (req, res) => {
   const { email, password } = req.body;
 
@@ -95,7 +94,6 @@ app.post("/customerData", async (req, res) => {
 })
 
 // CADASTRO DE USUARIOS
-
 app.post("/registerCustomer", async (req, res) => {
   const { email, name, password } = req.body
   const encryptedPassword = await bcrypt.hash(password, 5)
@@ -131,7 +129,6 @@ app.get('/getAllProducts', async (req, res) => {
 })
 
 //GET ONE PRODUCT
-
 app.post("/getProductData", async (req, res) => {
   const { product_id } = req.body
   try {
@@ -147,7 +144,6 @@ app.post("/getProductData", async (req, res) => {
 })
 
 //CREATE PRODUCT
-
 app.post("/registerProduct", async (req, res) => {
   const {imagem, titulo, descricao, preco, user_id} = req.body
   try {
@@ -165,10 +161,23 @@ Order.createIndexes();
 
 //GET ORDERS BY CUSTOMER
 app.post('/getOrderByCustomer', async (req, res) => {
-  const {customer_id} = req.body
-  const objectId = new mongoose.Types.ObjectId(customer_id);
+  const {customerId} = req.body
+  const objectId = new mongoose.Types.ObjectId(customerId);
   try {
-    const customerOrders = await Order.find({ 'customer_id': objectId});
+    //EXEMPLO DE JOIN(aggregate) DE COMPRA(Order) COM PRODUTO(products)
+    const customerOrders = await Order.aggregate([
+      {
+        $lookup: {
+          from: "Products",
+          localField: "product_id",
+          foreignField: "_id",
+          as: "product"
+        }
+      },
+      {
+        $match: {customer_id: objectId}
+      }
+    ]);
     res.send({ status: 'ok', data: customerOrders })
   } catch (e) {
     res.send({ status: 'error', data: e});
@@ -176,7 +185,6 @@ app.post('/getOrderByCustomer', async (req, res) => {
 })
 
 //CREATE ORDER
-
 app.post("/registerOrder", async (req, res) => {
   const {customer_id, product_id} = req.body
   try {
@@ -188,7 +196,6 @@ app.post("/registerOrder", async (req, res) => {
 });
 
 //PORT
-
 const PORT = process.env.PORT || 5000
 app.listen(PORT, '0.0.0.0', function () {
   console.log(`Servido rodando na porta ${PORT}!`)

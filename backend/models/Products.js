@@ -22,6 +22,10 @@ const Products = new Schema({
     type: Number,
     default: 0
   },
+  avaliacoes: {
+    type: Number,
+    default: 0
+  },
   user_id: {
     //EXEMPLO DE CRIAÇÃO DE CHAVES ESTRANGEIRAS
     type: Schema.Types.ObjectId,
