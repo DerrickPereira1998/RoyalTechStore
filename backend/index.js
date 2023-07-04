@@ -65,7 +65,7 @@ app.post('/customerLogin', async (req, res) => {
   }
   if (await bcrypt.compare(password, user.password)) {
     // CRIAÇÃO DE DADOS DO USUARIO NO LOCAL STORAGE
-    const token = jwt.sign({ email: user.email }, JWT_SECRET, {expiresIn:86400})
+    const token = jwt.sign({ email: user.email }, JWT_SECRET, {expiresIn:259200}) //3 DIAS
 
     if (res.status(201)) {
       return res.json({ status: "ok", data: token })

@@ -66,11 +66,7 @@
   .section{
     margin: 20px 2vw 0 2vw;
     grid-template-columns: 1fr;
-    &__filters{
-    }
     &__products{
-      &__title{
-      }
       &__list{
         grid-template-columns: repeat(3, 33.3%);
         padding: 1.5vw 3.5vw 1.5vw 1.5vw;
@@ -81,10 +77,6 @@
             max-width: 100%;
             min-height: 25vw;
           }
-          &__price{
-          }
-          &__name{
-          }
         }
       }
     }
@@ -93,11 +85,7 @@
 
 @media (max-width: 700px) {
   .section{
-    &__filters{
-    }
     &__products{
-      &__title{
-      }
       &__list{
         padding: 1.5vw 3vw 1.5vw 1.5vw;
         grid-template-columns: repeat(2, 50%);
@@ -107,10 +95,6 @@
           &__img{
             max-width: 100%;
             min-height: 45vw;
-          }
-          &__price{
-          }
-          &__name{
           }
         }
       }

@@ -53,7 +53,7 @@ export default function Header() {
     window.localStorage.clear()
     togglePopup()
     setCustomer({ _id: "", name: "", email: "", password: "" })
-    window.location.reload()
+    navigate('/')
   }
 
   return (
