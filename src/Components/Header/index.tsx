@@ -104,7 +104,7 @@ export default function Header() {
             Compras <br />
             <strong>Feitas</strong>
           </Link>
-          <Link className={styles.header__nav__link} to={'/carrinho'} aria-hidden="false">
+          <Link className={styles.header__nav__link} to={'/shoppingcart'} aria-hidden="false">
             <AiOutlineShoppingCart size={40} />
           </Link>
         </nav>

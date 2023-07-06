@@ -26,6 +26,18 @@ export default function ProductDetails() {
     }
   }
 
+  const addToCart = async (e: any, customer_id: string, product_id: string) => {
+    e.preventDefault()
+    if(customer_id && product_id){
+      try {
+        await http.post('registerShoppingCart', { customer_id, product_id })
+        navigate('/')
+      } catch (error) {
+        console.log('error on submiting order: ', error)
+      }
+    }
+  }
+
   useEffect(() => {
     if (product_id) {
       http.post('getProductData', { product_id })
@@ -48,8 +60,8 @@ export default function ProductDetails() {
                 <p className={styles.content__details__text__desc}>{product?.descricao}</p>
               </div>
               <div className={styles.content__details__buttons}>
+                <button className={styles.content__details__buttons__button} onClick={(e) => addToCart(e ,customer._id, product._id)}>Colocar no carrinho</button>
                 <button className={styles.content__details__buttons__button} onClick={(e) => submitOrder(e ,customer._id, product._id)}>Comprar Agora</button>
-                <button className={styles.content__details__buttons__button}>Colocar no carrinho</button>
               </div>
             </div>
           </div>}

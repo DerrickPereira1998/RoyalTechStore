@@ -195,6 +195,57 @@ app.post("/registerOrder", async (req, res) => {
   }
 });
 
+//SHOPPING CART
+require('./models/ShoppingCart')
+const ShoppingCart = mongoose.model('shoppingCart');
+ShoppingCart.createIndexes();
+
+//GET SHOPPING CART ITENS BY CUSTOMER
+app.post('/getShoppingCartByCustomer', async (req, res) => {
+  const {customerId} = req.body
+  const objectId = new mongoose.Types.ObjectId(customerId);
+  try {
+    const customerOrders = await ShoppingCart.aggregate([
+      {
+        $lookup: {
+          from: "Products",
+          localField: "product_id",
+          foreignField: "_id",
+          as: "product"
+        }
+      },
+      {
+        $match: {customer_id: objectId}
+      }
+    ]);
+    res.send({ status: 'ok', data: customerOrders })
+  } catch (e) {
+    res.send({ status: 'error', data: e});
+  }
+})
+
+//CREATE SHOPPING CART ITEM
+app.post("/registerShoppingCart", async (req, res) => {
+  const {customer_id, product_id} = req.body
+  try {
+    await ShoppingCart.create({customer_id, product_id})
+    res.status.send(201).json({msg: "Shopping cart item registered!"})
+  } catch (e) {
+    res.send({ status: `error: ${e}` });
+  }
+});
+
+//EMPTY SHOPPING CART
+app.post("/emptyShoppingCart", async (req, res) => {
+  const {customer_id} = req.body
+  try {
+    await ShoppingCart.deleteMany({"customer_id": customer_id})
+    res.status.send(201).json({msg: "Shopping cart empty!"})
+  } catch (e) {
+    res.send({ status: `error: ${e}` });
+  }
+});
+
 //PORT
 const PORT = process.env.PORT || 5000
 app.listen(PORT, '0.0.0.0', function () {

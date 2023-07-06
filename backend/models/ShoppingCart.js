@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const Orders = new Schema({
+const ShoppingCart = new Schema({
   customer_id: {
     type: Schema.Types.ObjectId,
     ref: "customers",
@@ -16,7 +16,7 @@ const Orders = new Schema({
     type: Date,
     default: Date.now()
   }
-}, { collection: 'Orders', versionKey: false }
+}, { collection: 'Shoppingcart', versionKey: false }
 );
 
-mongoose.model('orders', Orders);
+mongoose.model('shoppingCart', ShoppingCart);

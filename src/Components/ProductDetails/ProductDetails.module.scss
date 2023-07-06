@@ -60,7 +60,7 @@
           color: $white;
           border: 1px solid $darkblue2;
         }
-        &:first-child{
+        &:last-child{
           background-color: $darkblue1;
           color: $white;
           &:hover{

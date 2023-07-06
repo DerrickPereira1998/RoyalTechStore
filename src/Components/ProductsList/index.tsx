@@ -1,19 +1,21 @@
 import IProduct from 'interfaces/IProduct'
-import { useContext, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Products.module.scss'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Context } from 'context/Context'
+import http from 'Utils/Http'
 
 // products.filter((product: IProduct) => product.titulo.toLowerCase().includes(query || "")).length !== 0 &&
 
 export default function ProductsList() {
 
-  const { products, getProducts } = useContext(Context)
+  const [products, setProducts] = useState<Array<IProduct>>([{ _id: "null", imagem: "null", titulo: "null", descricao:"null" ,preco: "null" }])
   const { query } = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
-    getProducts()
+    http.get('getAllProducts')
+      .then(res => setProducts(res.data.data))
+      .catch(err => console.log(err))
   },[])
 
   return (
