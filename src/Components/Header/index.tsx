@@ -94,7 +94,7 @@ export default function Header() {
               <div className={styles.popup__popupInner}>
                 <button className={styles.popup__popupInner__popupBtn}>Meus produtos</button>
                 <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/newproduct')}}>Criar produto</button>
-                <button className={styles.popup__popupInner__popupBtn}>Modificar conta</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/useredit')}}>Modificar conta</button>
                 <button className={styles.popup__popupInner__popupBtn} onClick={logout}>Sair da conta</button>
               </div>
             </>

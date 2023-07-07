@@ -13,6 +13,7 @@ import { Context } from 'context/Context'
 import MainPage from 'Components/MainPage';
 import Orders from 'Components/Orders';
 import ShoppingCart from 'Components/ShoppingCart';
+import UserEdit from 'Components/UserEdit';
 
 function AppRouter() {
 
@@ -37,6 +38,7 @@ function AppRouter() {
             <Route path='products/:query' element={<ProductsList />}></Route>
             <Route path='product/:product_id' element={<ProductDetails/>}></Route>
           </Route>
+          <Route path='/useredit' element={<UserEdit />}></Route>
           <Route path='/userlogin' element={<UserPage />}></Route>
           <Route path='/usersignup' element={<UserSignUp />}></Route>
         </Routes>

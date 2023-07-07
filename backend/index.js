@@ -113,6 +113,17 @@ app.post("/registerCustomer", async (req, res) => {
   }
 });
 
+app.post("/editCustomer", async (req, res) => {
+  const {customer_id , email, name, password } = req.body
+  const encryptedPassword = await bcrypt.hash(password, 5)
+  try {
+    await User.updateOne({_id: customer_id},{email: email, name: name, password: encryptedPassword,});
+    res.send({ status: "ok" });
+  } catch (e) {
+    res.send({ status: `error: ${e}` });
+  }
+});
+
 //PRODUCTS
 require('./models/Products')
 const Product = mongoose.model('products');
