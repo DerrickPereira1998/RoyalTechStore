@@ -15,7 +15,14 @@ export const ThemeProvider = ({ children }: any) => {
   const getCustomer = () => {
     if(token !== ''){
       http.post('customerData', { token: window.localStorage.getItem("token") })
-        .then(res => setCustomer(res.data.data))
+        .then((res) => {
+          if(res.data.data === "token expired"){
+            window.localStorage.clear()
+            setCustomer({ _id: "", name: "", email: "", password: "" })
+          } else {
+            setCustomer(res.data.data)
+          }
+        })
         .catch(err => console.log(err))
     }
   }

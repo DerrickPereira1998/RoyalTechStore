@@ -80,8 +80,17 @@ app.post('/customerLogin', async (req, res) => {
 app.post("/customerData", async (req, res) => {
   const { token } = req.body
   try {
-    const user = jwt.verify(token, JWT_SECRET)
+    const user = jwt.verify(token, JWT_SECRET, (err, res) => {
+      if (err){
+        return "token expired"
+      } else{
+        return res
+      }
+    })
     const userEmail = user.email
+    if(user === "token expired"){
+      return res.send({ status: 'error', data: "token expired" })
+    }
     User.findOne({ email: userEmail })
       .then((data) => {
         res.send({ status: 'ok', data: data })
