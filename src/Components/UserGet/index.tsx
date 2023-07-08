@@ -1,14 +1,11 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import styles from './UserGet.module.scss'
 import { Link, useNavigate } from 'react-router-dom';
 import http from 'Utils/Http';
-import { Context } from 'context/Context'
 
 export default function UserGet() {
 
   const navigate = useNavigate()
-
-  const { getCustomer } = useContext(Context)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,10 +17,12 @@ export default function UserGet() {
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     http.post('customerLogin', { email, password })
-      .then(res => window.localStorage.setItem("token", res.data.data))
-      .then(() => console.log('userget'))
+      .then((res) => {
+        window.localStorage.setItem("token", res.data.data)
+        window.alert(res.data.data)
+      })
       .catch(err => console.log("Erro ao logar cliente", err))
-    await timeout(500)
+    await timeout(5000)
     navigate('/')
     window.location.reload()
   }
