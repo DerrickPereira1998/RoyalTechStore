@@ -79,6 +79,7 @@ app.post('/customerLogin', async (req, res) => {
 // PEGAR DADOS DE USUARIO USANDO LOCAL STORAGE
 app.post("/customerData", async (req, res) => {
   const { token } = req.body
+  console.log('customer1')
   try {
     const user = jwt.verify(token, JWT_SECRET, (err, res) => {
       if (err){
@@ -94,9 +95,11 @@ app.post("/customerData", async (req, res) => {
     User.findOne({ email: userEmail })
       .then((data) => {
         res.send({ status: 'ok', data: data })
+        console.log('customer2')
       }).catch((error) => {
         res.send({ status: 'error', data: error })
       })
+      console.log('customer2')
   } catch (error) {
     console.log('Erro ao pegar dados de cliente: ', error)
   }
