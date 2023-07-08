@@ -16,7 +16,6 @@ export default function ProductsList() {
     http.get('getAllProducts')
       .then(res => setProducts(res.data.data))
       .catch(err => console.log(err))
-    console.log("ola")
   },[])
 
   return (

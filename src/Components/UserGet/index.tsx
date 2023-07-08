@@ -21,6 +21,7 @@ export default function UserGet() {
     e.preventDefault();
     http.post('customerLogin', { email, password })
       .then(res => window.localStorage.setItem("token", res.data.data))
+      .then(() => console.log('userget'))
       .catch(err => console.log("Erro ao logar cliente", err))
     await timeout(500)
     navigate('/')
