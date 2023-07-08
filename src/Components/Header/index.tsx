@@ -33,14 +33,14 @@ export default function Header() {
     }
   }
 
-  function handleNavigate(target: string, message = ''){
+  function handleNavigate(target: string){
     if(popup){
       togglePopup()
     }
-    if(message === ""){
-      navigate(target)
+    if(customer._id === ""){
+      window.alert("Faça login para acessar esta funcionalidade")
     } else {
-      window.alert(message)
+      navigate(target)
     }
   }
 
@@ -92,7 +92,7 @@ export default function Header() {
               <div className={styles.popup} onClick={() => togglePopup()} />
               <div className={styles.popup__popupArrow} />
               <div className={styles.popup__popupInner}>
-                <button className={styles.popup__popupInner__popupBtn}>Meus produtos</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/orders')}}>Suas Compras</button>
                 <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/newproduct')}}>Criar produto</button>
                 <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/useredit')}}>Modificar conta</button>
                 <button className={styles.popup__popupInner__popupBtn} onClick={logout}>Sair da conta</button>
@@ -100,11 +100,11 @@ export default function Header() {
             </>
           }
 
-          <div className={styles.header__nav__link} onClick={() => handleNavigate('/orders', "Usuário não cadastrado")} aria-hidden="false">
+          <div className={styles.header__nav__link} onClick={() => handleNavigate('/orders')} aria-hidden="false">
             Compras <br />
             <strong>Feitas</strong>
           </div>
-          <div className={styles.header__nav__link} onClick={() => handleNavigate('/shoppingcart', "Usuário não cadastrado")} aria-hidden="false">
+          <div className={styles.header__nav__link} onClick={() => handleNavigate('/shoppingcart')} aria-hidden="false">
             <AiOutlineShoppingCart size={40} />
           </div>
         </nav>
