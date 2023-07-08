@@ -22,7 +22,7 @@ function AppRouter() {
   useEffect(() => {
     //TOKEN RETRIVAL FUNCTION / USER LOGGED
     getCustomer()
-  }, [])
+  }, [getCustomer])
 
   return (
     <main className={styles.back}>

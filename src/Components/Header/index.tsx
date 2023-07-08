@@ -33,7 +33,7 @@ export default function Header() {
     }
   }
 
-  function handleNavigate(target: string){
+  function customerNavigate(target: string){
     if(popup){
       togglePopup()
     }
@@ -59,11 +59,11 @@ export default function Header() {
   return (
     <>
       <header className={styles.header}>
-        <img onClick={() => handleNavigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo} />
+        <img onClick={() => navigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo} />
 
         <span className={styles.header__searchbar}>
           <input className={styles.header__searchbar__input} placeholder={'Pesquisar produtos'} value={query} onChange={(e) => setQuery(e.target.value)}></input>
-          <button onClick={() => handleNavigate(`/products/${query}`)} className={styles.header__searchbar__searchbutton}>
+          <button onClick={() => navigate(`/products/${query}`)} className={styles.header__searchbar__searchbutton}>
             <RxMagnifyingGlass color='black' size={20} />
           </button>
         </span>
@@ -92,19 +92,19 @@ export default function Header() {
               <div className={styles.popup} onClick={() => togglePopup()} />
               <div className={styles.popup__popupArrow} />
               <div className={styles.popup__popupInner}>
-                <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/orders')}}>Suas Compras</button>
-                <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/newproduct')}}>Criar produto</button>
-                <button className={styles.popup__popupInner__popupBtn} onClick={() => {handleNavigate('/useredit')}}>Modificar conta</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={() => {customerNavigate('/orders')}}>Suas Compras</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={() => {customerNavigate('/newproduct')}}>Criar produto</button>
+                <button className={styles.popup__popupInner__popupBtn} onClick={() => {customerNavigate('/useredit')}}>Modificar conta</button>
                 <button className={styles.popup__popupInner__popupBtn} onClick={logout}>Sair da conta</button>
               </div>
             </>
           }
 
-          <div className={styles.header__nav__link} onClick={() => handleNavigate('/orders')} aria-hidden="false">
+          <div className={styles.header__nav__link} onClick={() => customerNavigate('/orders')} aria-hidden="false">
             Compras <br />
             <strong>Feitas</strong>
           </div>
-          <div className={styles.header__nav__link} onClick={() => handleNavigate('/shoppingcart')} aria-hidden="false">
+          <div className={styles.header__nav__link} onClick={() => customerNavigate('/shoppingcart')} aria-hidden="false">
             <AiOutlineShoppingCart size={40} />
           </div>
         </nav>
