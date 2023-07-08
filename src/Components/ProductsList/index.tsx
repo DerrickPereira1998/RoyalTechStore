@@ -8,7 +8,7 @@ import http from 'Utils/Http'
 
 export default function ProductsList() {
 
-  const [products, setProducts] = useState<Array<IProduct>>([{ _id: "null", imagem: "null", titulo: "null", descricao:"null" ,preco: "null" }])
+  const [products, setProducts] = useState<Array<IProduct>>([{ _id: "", imagem: "", titulo: "", descricao:"" ,preco: "" }])
   const { query } = useParams()
   const navigate = useNavigate()
 
@@ -16,6 +16,7 @@ export default function ProductsList() {
     http.get('getAllProducts')
       .then(res => setProducts(res.data.data))
       .catch(err => console.log(err))
+    console.log("ola")
   },[])
 
   return (
@@ -23,9 +24,6 @@ export default function ProductsList() {
       <div className={styles.section__products}>
         <div className={styles.section__products__container}>
           <p className={styles.section__products__container__title}>Resultados</p>
-          <div className={styles.section__products__container__filters}>
-            Ordenadores
-          </div>
         </div>
         <div className={styles.section__products__list}>
           { products.length === 1 

@@ -33,14 +33,14 @@ export default function Header() {
     }
   }
 
-  function handleNavigate(target: string){
+  function handleNavigate(target: string, message = ''){
     if(popup){
       togglePopup()
     }
-    if(target === '/products/'){
-      navigate('/products/#')
-    } else {
+    if(message === ""){
       navigate(target)
+    } else {
+      window.alert(message)
     }
   }
 
@@ -100,13 +100,13 @@ export default function Header() {
             </>
           }
 
-          <Link className={styles.header__nav__link} to={'/orders'} aria-hidden="false">
+          <div className={styles.header__nav__link} onClick={() => handleNavigate('/orders', "Usuário não cadastrado")} aria-hidden="false">
             Compras <br />
             <strong>Feitas</strong>
-          </Link>
-          <Link className={styles.header__nav__link} to={'/shoppingcart'} aria-hidden="false">
+          </div>
+          <div className={styles.header__nav__link} onClick={() => handleNavigate('/shoppingcart', "Usuário não cadastrado")} aria-hidden="false">
             <AiOutlineShoppingCart size={40} />
-          </Link>
+          </div>
         </nav>
       </header>
       <div>

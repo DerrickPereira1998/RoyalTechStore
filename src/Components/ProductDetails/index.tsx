@@ -16,25 +16,33 @@ export default function ProductDetails() {
 
   const submitOrder = async (e: any, customer_id: string, product_id: string) => {
     e.preventDefault()
-    if(customer_id && product_id){
-      try {
-        await http.post('registerOrder', { customer_id, product_id })
-        navigate('/')
-      } catch (error) {
-        console.log('error on submiting order: ', error)
+    if(customer._id !== ""){
+      if(customer_id && product_id){
+        try {
+          await http.post('registerOrder', { customer_id, product_id })
+          navigate('/')
+        } catch (error) {
+          console.log('error on submiting order: ', error)
+        }
       }
+    } else{
+      window.alert('Você necessita estar cadastrado para fazer compras')
     }
   }
 
   const addToCart = async (e: any, customer_id: string, product_id: string) => {
     e.preventDefault()
-    if(customer_id && product_id){
-      try {
-        await http.post('registerShoppingCart', { customer_id, product_id })
-        navigate('/')
-      } catch (error) {
-        console.log('error on submiting order: ', error)
+    if(customer._id !== ""){
+      if(customer_id && product_id){
+        try {
+          await http.post('registerShoppingCart', { customer_id, product_id })
+          navigate('/')
+        } catch (error) {
+          console.log('error on submiting order: ', error)
+        }
       }
+    } else{
+      window.alert('Você necessita estar cadastrado para adicionar itens ao carrinho')
     }
   }
 

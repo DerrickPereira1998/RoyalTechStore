@@ -11,7 +11,6 @@
       justify-content: space-between;
       margin-bottom: 10px;
       &__filters{
-        background-color: lime;
         border-radius: 10px;
         width: 20vw;
       }
@@ -40,7 +39,8 @@
         overflow-x: hidden;
         overflow-y: hidden;
         &__img{
-          max-width: 100%;
+          width: 100%;
+          object-fit: contain;
           min-height: 18vw;
         }
         &__price{
@@ -74,7 +74,6 @@
           height: calc(100vw/3);
           overflow-y: scroll;
           &__img{
-            max-width: 100%;
             min-height: 25vw;
           }
         }
@@ -93,7 +92,6 @@
           height: calc(120vw/2);
           overflow-y: scroll;
           &__img{
-            max-width: 100%;
             min-height: 45vw;
           }
         }
