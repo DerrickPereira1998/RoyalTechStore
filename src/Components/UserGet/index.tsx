@@ -11,24 +11,28 @@ export default function UserGet() {
   const [password, setPassword] = useState("");
 
   function timeout(delay: number) {
-    return new Promise( res => setTimeout(res, delay) );
+    return new Promise(res => setTimeout(res, delay));
   }
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     http.post('customerLogin', { email, password })
       .then((res) => {
-        if(res.data.status === "ok"){
+        if(res.data.status){
           window.localStorage.setItem("token", res.data.data)
           window.alert("Login efetuado com sucesso!")
-          timeout(2000)
+          timeout(1500)
           navigate('/')
+          window.location.reload()
         } else {
-          window.alert("Login efetuado com sucesso!")
+          window.alert("Email ou senha incorretos!")
+          setEmail("")
+          setPassword("")
         }
       })
-      .catch(err => console.log("Erro ao logar cliente", err))    
-    window.location.reload()
+      .catch(err => {
+        console.log("Erro ao logar cliente", err)
+      })
   }
 
   return (

@@ -6,6 +6,10 @@
   flex-direction: column;
   margin: 20px calc(1.5vw + 10px) 0 2vw;
   &__products{
+    &__empty{
+      margin-top: 20px;
+      font-weight: 600;
+    }
     &__container{
       display: flex;
       justify-content: space-between;

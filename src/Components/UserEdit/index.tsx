@@ -70,7 +70,7 @@ export default function UserEdit() {
           </div>
           <div className={styles.form__div}>
             <p className={styles.form__div__text}>
-              Senha
+              Nova senha
             </p>
             <input required type='password' className={styles.form__div__input} value={password} onChange={(e) => setPassword(e.target.value)} />
             {passwordErr !== '' && <p className={styles.form__div__err}>{passwordErr}</p>}
