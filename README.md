@@ -8,7 +8,7 @@ Projeto criado para treinar e aprender novos conhecimentos de desenvolvimento em
 
 ## Tecnologias Utilizadas
 
-React: Utilizado como estrutura principal para organizar e estruturar o programa. [!<br/>]
+React: Utilizado como estrutura principal para organizar e estruturar o programa. <br/>
 Typescript: Utilizado para melhorar a qualidade do código e a reduzir erros comuns em desenvolvimento.
 Bcryptjs: Utilizado para emcryptar senhas de usuários.
 Body-parser: Utilizado para converter o corpo de requisições para formatos diferentes.
