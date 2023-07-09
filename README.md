@@ -2,7 +2,7 @@
 
 ## Imagem do projeto
 
-![image](https://github.com/DerrickPereira1998/RoyalTechStore/assets/66483360/5182cb65-21db-4533-baf2-7a50db163032)
+![image](https://github.com/DerrickPereira1998/RoyalTechStore/assets/66483360/180050b2-5a1a-4b00-9564-ccb9acd9c44d)
 
 ## Objetivo do Projeto
 
@@ -29,7 +29,7 @@ Concurrently e Nodemon: Utilizados para rodar a aplicação localmente atualizan
 
 ### `npm start`
 
-Comando usado para iniciar ambos os servidores back e front nas portas 5000 e 3000 respectivamente, oque é possível utilizando concurrently
+Comando usado para iniciar ambos os servidores back e front nas portas 5000 e 3000 respectivamente, oque é possível utilizando concurrently.
 
 ### `npm install`
 
@@ -38,3 +38,5 @@ Comando utilizado para instalar todas as dependencias da aplicação, utilize is
 ## Link do projeto
 
 https://royal-tech-store.vercel.app/
+
+### Estou a disposição para qualquer dúvida sobre o projeto!
