@@ -33,6 +33,12 @@ export default function Header() {
     }
   }
 
+  function searchBarKeypress(e: any){
+    if(e.keyCode === 13){
+      navigate(`/products/${query}`)
+    }
+  }
+
   function customerNavigate(target: string){
     if(popup){
       togglePopup()
@@ -62,7 +68,13 @@ export default function Header() {
         <img onClick={() => navigate('/')} src={logo} alt='logo do site royal tech store' className={styles.header__logo} />
 
         <span className={styles.header__searchbar}>
-          <input className={styles.header__searchbar__input} placeholder={'Pesquisar produtos'} value={query} onChange={(e) => setQuery(e.target.value)}></input>
+          <input 
+            className={styles.header__searchbar__input} 
+            placeholder={'Pesquisar produtos'} 
+            value={query} 
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyUp={(e) => searchBarKeypress(e)}
+          />
           <button onClick={() => navigate(`/products/${query}`)} className={styles.header__searchbar__searchbutton}>
             <RxMagnifyingGlass color='black' size={20} />
           </button>
