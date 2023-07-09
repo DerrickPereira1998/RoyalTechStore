@@ -1,6 +1,8 @@
 # Projeto Royal Web Store
 
-//Imagem
+## Imagem do projeto
+
+![image](https://github.com/DerrickPereira1998/RoyalTechStore/assets/66483360/5182cb65-21db-4533-baf2-7a50db163032)
 
 ## Objetivo do Projeto
 
