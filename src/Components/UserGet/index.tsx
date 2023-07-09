@@ -18,12 +18,16 @@ export default function UserGet() {
     e.preventDefault();
     http.post('customerLogin', { email, password })
       .then((res) => {
-        window.localStorage.setItem("token", res.data.data)
-        window.alert(res.data.data)
+        if(res.data.status === "ok"){
+          window.localStorage.setItem("token", res.data.data)
+          window.alert("Login efetuado com sucesso!")
+          timeout(2000)
+          navigate('/')
+        } else {
+          window.alert("Login efetuado com sucesso!")
+        }
       })
-      .catch(err => console.log("Erro ao logar cliente", err))
-    await timeout(5000)
-    navigate('/')
+      .catch(err => console.log("Erro ao logar cliente", err))    
     window.location.reload()
   }
 
