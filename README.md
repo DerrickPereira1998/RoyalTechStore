@@ -9,18 +9,18 @@ Projeto criado para treinar e aprender novos conhecimentos de desenvolvimento em
 ## Tecnologias Utilizadas
 
 React: Utilizado como estrutura principal para organizar e estruturar o programa. <br/>
-Typescript: Utilizado para melhorar a qualidade do código e a reduzir erros comuns em desenvolvimento.
-Bcryptjs: Utilizado para emcryptar senhas de usuários.
-Body-parser: Utilizado para converter o corpo de requisições para formatos diferentes.
-Cors: Utilizado para pegar dados de outros ambientes
-Express: Framework usado principalmente para a criação de rotas e APIs
-JWT: Tambem chamado json web token é utilizado para a criação e tratamento de tokens utilizados no cadatro e login de usuários.
-Mongoose: Utilizado para criar conecções ao banco de dados MongoDB e para a formatação de dados em schemas, formato utilizado no cadastro de novos dados.
-SASS: Utilizado para adicionar recursos especiais como variáveis, mixins, funções e operações e outras opções variadas a CSS.
-React css modules: Utilizado para criar classes CSS locais, impedindo conflitos entre estilos.
-Axios: Utilizado para simplificar a integração do front com as APIs contidas no back.
-React-Icons: Utilizado para pegar imagens utilizadas no projeto.
-React-router-dom: Utilizado para a criação de rotas e para a navegação entre rotas.
+Typescript: Utilizado para melhorar a qualidade do código e a reduzir erros comuns em desenvolvimento. <br/>
+Bcryptjs: Utilizado para emcryptar senhas de usuários. <br/>
+Body-parser: Utilizado para converter o corpo de requisições para formatos diferentes. <br/>
+Cors: Utilizado para pegar dados de outros ambientes. <br/>
+Express: Framework usado principalmente para a criação de rotas e APIs. <br/>
+JWT: Tambem chamado json web token é utilizado para a criação e tratamento de tokens utilizados no cadatro e login de usuários. <br/>
+Mongoose: Utilizado para criar conecções ao banco de dados MongoDB e para a formatação de dados em schemas, formato utilizado no cadastro de novos dados. <br/>
+SASS: Utilizado para adicionar recursos especiais como variáveis, mixins, funções e operações e outras opções variadas a CSS. <br/>
+React css modules: Utilizado para criar classes CSS locais, impedindo conflitos entre estilos. <br/>
+Axios: Utilizado para simplificar a integração do front com as APIs contidas no back. <br/>
+React-Icons: Utilizado para pegar imagens utilizadas no projeto. <br/>
+React-router-dom: Utilizado para a criação de rotas e para a navegação entre rotas. <br/>
 Concurrently e Nodemon: Utilizados para rodar a aplicação localmente atualizando o servidor a cada mudança feita.
 
 ## Comandos
